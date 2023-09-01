@@ -39,3 +39,4 @@ lerna-debug.log*
 *.lock
 .env
 .local.env
+.prisma/generated

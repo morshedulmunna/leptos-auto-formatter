@@ -5817,25 +5817,25 @@ export namespace Prisma {
   export type AnsQusMinAggregateOutputType = {
     id: string | null
     questionId: string | null
+    resultId: string | null
     createAt: Date | null
     updateAt: Date | null
-    resultId: string | null
   }
 
   export type AnsQusMaxAggregateOutputType = {
     id: string | null
     questionId: string | null
+    resultId: string | null
     createAt: Date | null
     updateAt: Date | null
-    resultId: string | null
   }
 
   export type AnsQusCountAggregateOutputType = {
     id: number
     questionId: number
+    resultId: number
     createAt: number
     updateAt: number
-    resultId: number
     _all: number
   }
 
@@ -5843,25 +5843,25 @@ export namespace Prisma {
   export type AnsQusMinAggregateInputType = {
     id?: true
     questionId?: true
+    resultId?: true
     createAt?: true
     updateAt?: true
-    resultId?: true
   }
 
   export type AnsQusMaxAggregateInputType = {
     id?: true
     questionId?: true
+    resultId?: true
     createAt?: true
     updateAt?: true
-    resultId?: true
   }
 
   export type AnsQusCountAggregateInputType = {
     id?: true
     questionId?: true
+    resultId?: true
     createAt?: true
     updateAt?: true
-    resultId?: true
     _all?: true
   }
 
@@ -5940,9 +5940,9 @@ export namespace Prisma {
   export type AnsQusGroupByOutputType = {
     id: string
     questionId: string
+    resultId: string | null
     createAt: Date
     updateAt: Date
-    resultId: string | null
     _count: AnsQusCountAggregateOutputType | null
     _min: AnsQusMinAggregateOutputType | null
     _max: AnsQusMaxAggregateOutputType | null
@@ -5965,9 +5965,9 @@ export namespace Prisma {
   export type AnsQusSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     questionId?: boolean
+    resultId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    resultId?: boolean
     qus?: boolean | QuestionDefaultArgs<ExtArgs>
     Result?: boolean | AnsQus$ResultArgs<ExtArgs>
   }, ExtArgs["result"]["ansQus"]>
@@ -5975,9 +5975,9 @@ export namespace Prisma {
   export type AnsQusSelectScalar = {
     id?: boolean
     questionId?: boolean
+    resultId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    resultId?: boolean
   }
 
   export type AnsQusInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -5995,9 +5995,9 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       id: string
       questionId: string
+      resultId: string | null
       createAt: Date
       updateAt: Date
-      resultId: string | null
     }, ExtArgs["result"]["ansQus"]>
     composites: {}
   }
@@ -6397,9 +6397,9 @@ export namespace Prisma {
   interface AnsQusFieldRefs {
     readonly id: FieldRef<"AnsQus", 'String'>
     readonly questionId: FieldRef<"AnsQus", 'String'>
+    readonly resultId: FieldRef<"AnsQus", 'String'>
     readonly createAt: FieldRef<"AnsQus", 'DateTime'>
     readonly updateAt: FieldRef<"AnsQus", 'DateTime'>
-    readonly resultId: FieldRef<"AnsQus", 'String'>
   }
     
 
@@ -11611,9 +11611,9 @@ export namespace Prisma {
   export const AnsQusScalarFieldEnum: {
     id: 'id',
     questionId: 'questionId',
+    resultId: 'resultId',
     createAt: 'createAt',
-    updateAt: 'updateAt',
-    resultId: 'resultId'
+    updateAt: 'updateAt'
   };
 
   export type AnsQusScalarFieldEnum = (typeof AnsQusScalarFieldEnum)[keyof typeof AnsQusScalarFieldEnum]
@@ -12047,9 +12047,9 @@ export namespace Prisma {
     NOT?: AnsQusWhereInput | AnsQusWhereInput[]
     id?: StringFilter<"AnsQus"> | string
     questionId?: StringFilter<"AnsQus"> | string
+    resultId?: StringNullableFilter<"AnsQus"> | string | null
     createAt?: DateTimeFilter<"AnsQus"> | Date | string
     updateAt?: DateTimeFilter<"AnsQus"> | Date | string
-    resultId?: StringNullableFilter<"AnsQus"> | string | null
     qus?: XOR<QuestionRelationFilter, QuestionWhereInput>
     Result?: XOR<ResultNullableRelationFilter, ResultWhereInput> | null
   }
@@ -12057,9 +12057,9 @@ export namespace Prisma {
   export type AnsQusOrderByWithRelationInput = {
     id?: SortOrder
     questionId?: SortOrder
+    resultId?: SortOrderInput | SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    resultId?: SortOrderInput | SortOrder
     qus?: QuestionOrderByWithRelationInput
     Result?: ResultOrderByWithRelationInput
   }
@@ -12070,9 +12070,9 @@ export namespace Prisma {
     AND?: AnsQusWhereInput | AnsQusWhereInput[]
     OR?: AnsQusWhereInput[]
     NOT?: AnsQusWhereInput | AnsQusWhereInput[]
+    resultId?: StringNullableFilter<"AnsQus"> | string | null
     createAt?: DateTimeFilter<"AnsQus"> | Date | string
     updateAt?: DateTimeFilter<"AnsQus"> | Date | string
-    resultId?: StringNullableFilter<"AnsQus"> | string | null
     qus?: XOR<QuestionRelationFilter, QuestionWhereInput>
     Result?: XOR<ResultNullableRelationFilter, ResultWhereInput> | null
   }, "id" | "questionId">
@@ -12080,9 +12080,9 @@ export namespace Prisma {
   export type AnsQusOrderByWithAggregationInput = {
     id?: SortOrder
     questionId?: SortOrder
+    resultId?: SortOrderInput | SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    resultId?: SortOrderInput | SortOrder
     _count?: AnsQusCountOrderByAggregateInput
     _max?: AnsQusMaxOrderByAggregateInput
     _min?: AnsQusMinOrderByAggregateInput
@@ -12094,9 +12094,9 @@ export namespace Prisma {
     NOT?: AnsQusScalarWhereWithAggregatesInput | AnsQusScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AnsQus"> | string
     questionId?: StringWithAggregatesFilter<"AnsQus"> | string
+    resultId?: StringNullableWithAggregatesFilter<"AnsQus"> | string | null
     createAt?: DateTimeWithAggregatesFilter<"AnsQus"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"AnsQus"> | Date | string
-    resultId?: StringNullableWithAggregatesFilter<"AnsQus"> | string | null
   }
 
   export type PaymentWhereInput = {
@@ -12696,9 +12696,9 @@ export namespace Prisma {
   export type AnsQusUncheckedCreateInput = {
     id?: string
     questionId: string
+    resultId?: string | null
     createAt?: Date | string
     updateAt?: Date | string
-    resultId?: string | null
   }
 
   export type AnsQusUpdateInput = {
@@ -12712,17 +12712,17 @@ export namespace Prisma {
   export type AnsQusUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     questionId?: StringFieldUpdateOperationsInput | string
+    resultId?: NullableStringFieldUpdateOperationsInput | string | null
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    resultId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AnsQusCreateManyInput = {
     id?: string
     questionId: string
+    resultId?: string | null
     createAt?: Date | string
     updateAt?: Date | string
-    resultId?: string | null
   }
 
   export type AnsQusUpdateManyMutationInput = {
@@ -12734,9 +12734,9 @@ export namespace Prisma {
   export type AnsQusUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     questionId?: StringFieldUpdateOperationsInput | string
+    resultId?: NullableStringFieldUpdateOperationsInput | string | null
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    resultId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PaymentCreateInput = {
@@ -13374,25 +13374,25 @@ export namespace Prisma {
   export type AnsQusCountOrderByAggregateInput = {
     id?: SortOrder
     questionId?: SortOrder
+    resultId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    resultId?: SortOrder
   }
 
   export type AnsQusMaxOrderByAggregateInput = {
     id?: SortOrder
     questionId?: SortOrder
+    resultId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    resultId?: SortOrder
   }
 
   export type AnsQusMinOrderByAggregateInput = {
     id?: SortOrder
     questionId?: SortOrder
+    resultId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    resultId?: SortOrder
   }
 
   export type PaymentCountOrderByAggregateInput = {
@@ -14778,9 +14778,9 @@ export namespace Prisma {
     NOT?: AnsQusScalarWhereInput | AnsQusScalarWhereInput[]
     id?: StringFilter<"AnsQus"> | string
     questionId?: StringFilter<"AnsQus"> | string
+    resultId?: StringNullableFilter<"AnsQus"> | string | null
     createAt?: DateTimeFilter<"AnsQus"> | Date | string
     updateAt?: DateTimeFilter<"AnsQus"> | Date | string
-    resultId?: StringNullableFilter<"AnsQus"> | string | null
   }
 
   export type QuestionCreateWithoutAnsQusInput = {
@@ -15202,9 +15202,9 @@ export namespace Prisma {
 
   export type AnsQusUncheckedCreateWithoutQusInput = {
     id?: string
+    resultId?: string | null
     createAt?: Date | string
     updateAt?: Date | string
-    resultId?: string | null
   }
 
   export type AnsQusCreateOrConnectWithoutQusInput = {
@@ -15605,9 +15605,9 @@ export namespace Prisma {
 
   export type AnsQusCreateManyQusInput = {
     id?: string
+    resultId?: string | null
     createAt?: Date | string
     updateAt?: Date | string
-    resultId?: string | null
   }
 
   export type SubCategoryUpdateWithoutQuestionInput = {
@@ -15645,16 +15645,16 @@ export namespace Prisma {
 
   export type AnsQusUncheckedUpdateWithoutQusInput = {
     id?: StringFieldUpdateOperationsInput | string
+    resultId?: NullableStringFieldUpdateOperationsInput | string | null
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    resultId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AnsQusUncheckedUpdateManyWithoutQusInput = {
     id?: StringFieldUpdateOperationsInput | string
+    resultId?: NullableStringFieldUpdateOperationsInput | string | null
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    resultId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

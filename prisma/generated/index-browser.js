@@ -150,9 +150,9 @@ exports.Prisma.ResultScalarFieldEnum = {
 exports.Prisma.AnsQusScalarFieldEnum = {
   id: 'id',
   questionId: 'questionId',
+  resultId: 'resultId',
   createAt: 'createAt',
-  updateAt: 'updateAt',
-  resultId: 'resultId'
+  updateAt: 'updateAt'
 };
 
 exports.Prisma.PaymentScalarFieldEnum = {

@@ -29,10 +29,10 @@ model User {
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 
-  earning Earning @relation(fields: [earningId], references: [id])
-  payment Payment @relation(fields: [paymentId], references: [id])
-  refer   Refer?  @relation(fields: [referId], references: [id])
-  result  Result  @relation(fields: [resultId], references: [id])
+  earning Earning @relation(fields: [earningId], references: [id], onDelete: Cascade)
+  payment Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  refer   Refer?  @relation(fields: [referId], references: [id], onDelete: Cascade)
+  result  Result  @relation(fields: [resultId], references: [id], onDelete: Cascade)
 
   @@map("user")
 }
@@ -41,7 +41,7 @@ model Refer {
   id             String     @id @default(cuid())
   own_refer_code String
   refer_contain  String
-  refer_list     ReferList? @relation(fields: [referListId], references: [id])
+  refer_list     ReferList? @relation(fields: [referListId], references: [id], onDelete: Cascade)
   referListId    String     @unique
 
   User User[]
@@ -74,15 +74,15 @@ model Result {
 }
 
 model AnsQus {
-  id         String @id @default(cuid())
-  questionId String @unique
+  id         String  @id @default(cuid())
+  questionId String  @unique
+  resultId   String?
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 
-  qus      Question @relation(fields: [questionId], references: [id])
-  Result   Result?  @relation(fields: [resultId], references: [id])
-  resultId String?
+  qus    Question @relation(fields: [questionId], references: [id])
+  Result Result?  @relation(fields: [resultId], references: [id], onDelete: Cascade)
 }
 
 model Payment {
@@ -110,7 +110,7 @@ model Category {
   id            String      @id @default(cuid())
   name          String
   description   String
-  sub_cateogry  SubCategory @relation(fields: [subCategoryId], references: [id])
+  sub_cateogry  SubCategory @relation(fields: [subCategoryId], references: [id], onDelete: Cascade)
   subCategoryId String
 
   createAt DateTime @default(now())
@@ -122,7 +122,7 @@ model SubCategory {
   name          String
   number_of_qus Int
 
-  question   Question @relation(fields: [questionId], references: [id])
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
   questionId String
 
   Category Category[]
