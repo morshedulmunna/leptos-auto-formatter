@@ -1,0 +1,146 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String  @id @default(cuid())
+  name            String?
+  picture         String?
+  select_category String?
+
+  referId   String
+  earningId String
+  resultId  String
+  paymentId String
+
+  email    String @unique
+  password String
+  phone    String @unique
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  earning Earning @relation(fields: [earningId], references: [id])
+  payment Payment @relation(fields: [paymentId], references: [id])
+  refer   Refer?  @relation(fields: [referId], references: [id])
+  result  Result  @relation(fields: [resultId], references: [id])
+
+  @@map("user")
+}
+
+model Refer {
+  id             String     @id @default(cuid())
+  own_refer_code String
+  refer_contain  String
+  refer_list     ReferList? @relation(fields: [referListId], references: [id])
+  referListId    String     @unique
+
+  User User[]
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  @@map("refer")
+}
+
+model ReferList {
+  id    String  @id @default(cuid())
+  refer String
+  Refer Refer[]
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  @@map("refer_list")
+}
+
+model Result {
+  id           String   @id @default(cuid())
+  solve        Int
+  wrong        Int
+  subject      Int
+  faster_ans   String
+  User         User[]
+  ans_qus_list AnsQus[]
+}
+
+model AnsQus {
+  id         String @id @default(cuid())
+  questionId String @unique
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  qus      Question @relation(fields: [questionId], references: [id])
+  Result   Result?  @relation(fields: [resultId], references: [id])
+  resultId String?
+}
+
+model Payment {
+  id     String @id @default(cuid())
+  type   String
+  number String
+  User   User[]
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Earning {
+  id              String @id @default(cuid())
+  earning_ammount Float?
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  User     User[]
+}
+
+// Category and Qus Model
+
+model Category {
+  id            String      @id @default(cuid())
+  name          String
+  description   String
+  sub_cateogry  SubCategory @relation(fields: [subCategoryId], references: [id])
+  subCategoryId String
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model SubCategory {
+  id            String @id @default(cuid())
+  name          String
+  number_of_qus Int
+
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId String
+
+  Category Category[]
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  @@map("sub_category")
+}
+
+model Question {
+  id          String        @id @default(cuid())
+  name        String
+  option      String[]
+  ans         String
+  SubCategory SubCategory[]
+
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  AnsQus   AnsQus[]
+}
