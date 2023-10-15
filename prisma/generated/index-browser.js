@@ -16,12 +16,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.2.0
- * Query Engine version: 6a3747c37ff169c90047725a05a6ef02e32ac97e
+ * Prisma Client JS version: 5.3.1
+ * Query Engine version: 2804dc98259d2ea960602aca6b8e7fdc03c1758f
  */
 Prisma.prismaVersion = {
-  client: "5.2.0",
-  engine: "6a3747c37ff169c90047725a05a6ef02e32ac97e"
+  client: "5.3.1",
+  engine: "2804dc98259d2ea960602aca6b8e7fdc03c1758f"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -112,22 +112,14 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   picture: 'picture',
   select_category: 'select_category',
-  referId: 'referId',
+  own_refer_code: 'own_refer_code',
+  refer_contain: 'refer_contain',
+  referListId: 'referListId',
   earningId: 'earningId',
   resultId: 'resultId',
   paymentId: 'paymentId',
   email: 'email',
-  password: 'password',
-  phone: 'phone',
-  createAt: 'createAt',
-  updateAt: 'updateAt'
-};
-
-exports.Prisma.ReferScalarFieldEnum = {
-  id: 'id',
-  own_refer_code: 'own_refer_code',
-  refer_contain: 'refer_contain',
-  referListId: 'referListId',
+  api_auth_key: 'api_auth_key',
   createAt: 'createAt',
   updateAt: 'updateAt'
 };
@@ -174,7 +166,6 @@ exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  subCategoryId: 'subCategoryId',
   createAt: 'createAt',
   updateAt: 'updateAt'
 };
@@ -182,10 +173,9 @@ exports.Prisma.CategoryScalarFieldEnum = {
 exports.Prisma.SubCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  number_of_qus: 'number_of_qus',
-  questionId: 'questionId',
   createAt: 'createAt',
-  updateAt: 'updateAt'
+  updateAt: 'updateAt',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.QuestionScalarFieldEnum = {
@@ -193,6 +183,7 @@ exports.Prisma.QuestionScalarFieldEnum = {
   name: 'name',
   option: 'option',
   ans: 'ans',
+  subCategoryId: 'subCategoryId',
   createAt: 'createAt',
   updateAt: 'updateAt'
 };
@@ -215,7 +206,6 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Refer: 'Refer',
   ReferList: 'ReferList',
   Result: 'Result',
   AnsQus: 'AnsQus',

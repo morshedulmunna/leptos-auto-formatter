@@ -103,40 +103,41 @@ model Earning {
 // Category and Qus Model
 
 model Category {
-  id            String      @id @default(cuid())
-  name          String
-  description   String
-  sub_cateogry  SubCategory @relation(fields: [subCategoryId], references: [id], onDelete: Cascade)
-  subCategoryId String
+  id          String @id @default(cuid())
+  name        String @unique
+  description String
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
+
+  SubCategory SubCategory[]
 }
 
 model SubCategory {
-  id            String @id @default(cuid())
-  name          String
-  number_of_qus Int
-
-  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  questionId String
-
-  Category Category[]
+  id   String @id @default(cuid())
+  name String
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  Question Question[]
 
   @@map("sub_category")
 }
 
 model Question {
-  id          String        @id @default(cuid())
-  name        String
-  option      String[]
-  ans         String
-  SubCategory SubCategory[]
+  id     String   @id @default(cuid())
+  name   String
+  option String[]
+  ans    String
+
+  sub_category  SubCategory @relation(fields: [subCategoryId], references: [id])
+  subCategoryId String
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
-  AnsQus   AnsQus[]
+  AnsQus   AnsQus?
 }

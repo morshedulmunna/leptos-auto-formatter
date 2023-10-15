@@ -19,11 +19,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
- * Model Refer
- * 
- */
-export type Refer = $Result.DefaultSelection<Prisma.$ReferPayload>
-/**
  * Model ReferList
  * 
  */
@@ -197,16 +192,6 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs>;
 
   /**
-   * `prisma.refer`: Exposes CRUD operations for the **Refer** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Refers
-    * const refers = await prisma.refer.findMany()
-    * ```
-    */
-  get refer(): Prisma.ReferDelegate<ExtArgs>;
-
-  /**
    * `prisma.referList`: Exposes CRUD operations for the **ReferList** model.
     * Example usage:
     * ```ts
@@ -342,8 +327,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.2.0
-   * Query Engine version: 6a3747c37ff169c90047725a05a6ef02e32ac97e
+   * Prisma Client JS version: 5.3.1
+   * Query Engine version: 2804dc98259d2ea960602aca6b8e7fdc03c1758f
    */
   export type PrismaVersion = {
     client: string
@@ -756,7 +741,6 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Refer: 'Refer',
     ReferList: 'ReferList',
     Result: 'Result',
     AnsQus: 'AnsQus',
@@ -781,7 +765,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'refer' | 'referList' | 'result' | 'ansQus' | 'payment' | 'earning' | 'category' | 'subCategory' | 'question'
+      modelProps: 'user' | 'referList' | 'result' | 'ansQus' | 'payment' | 'earning' | 'category' | 'subCategory' | 'question'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -848,72 +832,6 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>,
             result: $Utils.Optional<UserCountAggregateOutputType> | number
-          }
-        }
-      }
-      Refer: {
-        payload: Prisma.$ReferPayload<ExtArgs>
-        fields: Prisma.ReferFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ReferFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ReferFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload>
-          }
-          findFirst: {
-            args: Prisma.ReferFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ReferFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload>
-          }
-          findMany: {
-            args: Prisma.ReferFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload>[]
-          }
-          create: {
-            args: Prisma.ReferCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload>
-          }
-          createMany: {
-            args: Prisma.ReferCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.ReferDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload>
-          }
-          update: {
-            args: Prisma.ReferUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload>
-          }
-          deleteMany: {
-            args: Prisma.ReferDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ReferUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.ReferUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$ReferPayload>
-          }
-          aggregate: {
-            args: Prisma.ReferAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateRefer>
-          }
-          groupBy: {
-            args: Prisma.ReferGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<ReferGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ReferCountArgs<ExtArgs>,
-            result: $Utils.Optional<ReferCountAggregateOutputType> | number
           }
         }
       }
@@ -1594,49 +1512,15 @@ export namespace Prisma {
 
 
   /**
-   * Count Type ReferCountOutputType
-   */
-
-  export type ReferCountOutputType = {
-    User: number
-  }
-
-  export type ReferCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    User?: boolean | ReferCountOutputTypeCountUserArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * ReferCountOutputType without action
-   */
-  export type ReferCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ReferCountOutputType
-     */
-    select?: ReferCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * ReferCountOutputType without action
-   */
-  export type ReferCountOutputTypeCountUserArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-  }
-
-
-
-  /**
    * Count Type ReferListCountOutputType
    */
 
   export type ReferListCountOutputType = {
-    Refer: number
+    user: number
   }
 
   export type ReferListCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    Refer?: boolean | ReferListCountOutputTypeCountReferArgs
+    user?: boolean | ReferListCountOutputTypeCountUserArgs
   }
 
   // Custom InputTypes
@@ -1655,8 +1539,8 @@ export namespace Prisma {
   /**
    * ReferListCountOutputType without action
    */
-  export type ReferListCountOutputTypeCountReferArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ReferWhereInput
+  export type ReferListCountOutputTypeCountUserArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
   }
 
 
@@ -1774,15 +1658,49 @@ export namespace Prisma {
 
 
   /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    SubCategory: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    SubCategory?: boolean | CategoryCountOutputTypeCountSubCategoryArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountSubCategoryArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: SubCategoryWhereInput
+  }
+
+
+
+  /**
    * Count Type SubCategoryCountOutputType
    */
 
   export type SubCategoryCountOutputType = {
-    Category: number
+    Question: number
   }
 
   export type SubCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    Category?: boolean | SubCategoryCountOutputTypeCountCategoryArgs
+    Question?: boolean | SubCategoryCountOutputTypeCountQuestionArgs
   }
 
   // Custom InputTypes
@@ -1801,52 +1719,8 @@ export namespace Prisma {
   /**
    * SubCategoryCountOutputType without action
    */
-  export type SubCategoryCountOutputTypeCountCategoryArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: CategoryWhereInput
-  }
-
-
-
-  /**
-   * Count Type QuestionCountOutputType
-   */
-
-  export type QuestionCountOutputType = {
-    SubCategory: number
-    AnsQus: number
-  }
-
-  export type QuestionCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    SubCategory?: boolean | QuestionCountOutputTypeCountSubCategoryArgs
-    AnsQus?: boolean | QuestionCountOutputTypeCountAnsQusArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * QuestionCountOutputType without action
-   */
-  export type QuestionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the QuestionCountOutputType
-     */
-    select?: QuestionCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * QuestionCountOutputType without action
-   */
-  export type QuestionCountOutputTypeCountSubCategoryArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: SubCategoryWhereInput
-  }
-
-
-  /**
-   * QuestionCountOutputType without action
-   */
-  export type QuestionCountOutputTypeCountAnsQusArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: AnsQusWhereInput
+  export type SubCategoryCountOutputTypeCountQuestionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: QuestionWhereInput
   }
 
 
@@ -1870,13 +1744,14 @@ export namespace Prisma {
     name: string | null
     picture: string | null
     select_category: string | null
-    referId: string | null
+    own_refer_code: string | null
+    refer_contain: string | null
+    referListId: string | null
     earningId: string | null
     resultId: string | null
     paymentId: string | null
     email: string | null
-    password: string | null
-    phone: string | null
+    api_auth_key: string | null
     createAt: Date | null
     updateAt: Date | null
   }
@@ -1886,13 +1761,14 @@ export namespace Prisma {
     name: string | null
     picture: string | null
     select_category: string | null
-    referId: string | null
+    own_refer_code: string | null
+    refer_contain: string | null
+    referListId: string | null
     earningId: string | null
     resultId: string | null
     paymentId: string | null
     email: string | null
-    password: string | null
-    phone: string | null
+    api_auth_key: string | null
     createAt: Date | null
     updateAt: Date | null
   }
@@ -1902,13 +1778,14 @@ export namespace Prisma {
     name: number
     picture: number
     select_category: number
-    referId: number
+    own_refer_code: number
+    refer_contain: number
+    referListId: number
     earningId: number
     resultId: number
     paymentId: number
     email: number
-    password: number
-    phone: number
+    api_auth_key: number
     createAt: number
     updateAt: number
     _all: number
@@ -1920,13 +1797,14 @@ export namespace Prisma {
     name?: true
     picture?: true
     select_category?: true
-    referId?: true
+    own_refer_code?: true
+    refer_contain?: true
+    referListId?: true
     earningId?: true
     resultId?: true
     paymentId?: true
     email?: true
-    password?: true
-    phone?: true
+    api_auth_key?: true
     createAt?: true
     updateAt?: true
   }
@@ -1936,13 +1814,14 @@ export namespace Prisma {
     name?: true
     picture?: true
     select_category?: true
-    referId?: true
+    own_refer_code?: true
+    refer_contain?: true
+    referListId?: true
     earningId?: true
     resultId?: true
     paymentId?: true
     email?: true
-    password?: true
-    phone?: true
+    api_auth_key?: true
     createAt?: true
     updateAt?: true
   }
@@ -1952,13 +1831,14 @@ export namespace Prisma {
     name?: true
     picture?: true
     select_category?: true
-    referId?: true
+    own_refer_code?: true
+    refer_contain?: true
+    referListId?: true
     earningId?: true
     resultId?: true
     paymentId?: true
     email?: true
-    password?: true
-    phone?: true
+    api_auth_key?: true
     createAt?: true
     updateAt?: true
     _all?: true
@@ -2041,13 +1921,14 @@ export namespace Prisma {
     name: string | null
     picture: string | null
     select_category: string | null
-    referId: string
+    own_refer_code: string | null
+    refer_contain: string | null
+    referListId: string | null
     earningId: string
     resultId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt: Date
     updateAt: Date
     _count: UserCountAggregateOutputType | null
@@ -2074,19 +1955,20 @@ export namespace Prisma {
     name?: boolean
     picture?: boolean
     select_category?: boolean
-    referId?: boolean
+    own_refer_code?: boolean
+    refer_contain?: boolean
+    referListId?: boolean
     earningId?: boolean
     resultId?: boolean
     paymentId?: boolean
     email?: boolean
-    password?: boolean
-    phone?: boolean
+    api_auth_key?: boolean
     createAt?: boolean
     updateAt?: boolean
     earning?: boolean | EarningDefaultArgs<ExtArgs>
     payment?: boolean | PaymentDefaultArgs<ExtArgs>
-    refer?: boolean | User$referArgs<ExtArgs>
     result?: boolean | ResultDefaultArgs<ExtArgs>
+    ReferList?: boolean | User$ReferListArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2094,13 +1976,14 @@ export namespace Prisma {
     name?: boolean
     picture?: boolean
     select_category?: boolean
-    referId?: boolean
+    own_refer_code?: boolean
+    refer_contain?: boolean
+    referListId?: boolean
     earningId?: boolean
     resultId?: boolean
     paymentId?: boolean
     email?: boolean
-    password?: boolean
-    phone?: boolean
+    api_auth_key?: boolean
     createAt?: boolean
     updateAt?: boolean
   }
@@ -2108,8 +1991,8 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     earning?: boolean | EarningDefaultArgs<ExtArgs>
     payment?: boolean | PaymentDefaultArgs<ExtArgs>
-    refer?: boolean | User$referArgs<ExtArgs>
     result?: boolean | ResultDefaultArgs<ExtArgs>
+    ReferList?: boolean | User$ReferListArgs<ExtArgs>
   }
 
 
@@ -2118,21 +2001,22 @@ export namespace Prisma {
     objects: {
       earning: Prisma.$EarningPayload<ExtArgs>
       payment: Prisma.$PaymentPayload<ExtArgs>
-      refer: Prisma.$ReferPayload<ExtArgs> | null
       result: Prisma.$ResultPayload<ExtArgs>
+      ReferList: Prisma.$ReferListPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetResult<{
       id: string
       name: string | null
       picture: string | null
       select_category: string | null
-      referId: string
+      own_refer_code: string | null
+      refer_contain: string | null
+      referListId: string | null
       earningId: string
       resultId: string
       paymentId: string
       email: string
-      password: string
-      phone: string
+      api_auth_key: string
       createAt: Date
       updateAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2504,9 +2388,9 @@ export namespace Prisma {
 
     payment<T extends PaymentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PaymentDefaultArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    refer<T extends User$referArgs<ExtArgs> = {}>(args?: Subset<T, User$referArgs<ExtArgs>>): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
     result<T extends ResultDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ResultDefaultArgs<ExtArgs>>): Prisma__ResultClient<$Result.GetResult<Prisma.$ResultPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    ReferList<T extends User$ReferListArgs<ExtArgs> = {}>(args?: Subset<T, User$ReferListArgs<ExtArgs>>): Prisma__ReferListClient<$Result.GetResult<Prisma.$ReferListPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2540,13 +2424,14 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly picture: FieldRef<"User", 'String'>
     readonly select_category: FieldRef<"User", 'String'>
-    readonly referId: FieldRef<"User", 'String'>
+    readonly own_refer_code: FieldRef<"User", 'String'>
+    readonly refer_contain: FieldRef<"User", 'String'>
+    readonly referListId: FieldRef<"User", 'String'>
     readonly earningId: FieldRef<"User", 'String'>
     readonly resultId: FieldRef<"User", 'String'>
     readonly paymentId: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
-    readonly phone: FieldRef<"User", 'String'>
+    readonly api_auth_key: FieldRef<"User", 'String'>
     readonly createAt: FieldRef<"User", 'DateTime'>
     readonly updateAt: FieldRef<"User", 'DateTime'>
   }
@@ -2861,18 +2746,18 @@ export namespace Prisma {
 
 
   /**
-   * User.refer
+   * User.ReferList
    */
-  export type User$referArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type User$ReferListArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Refer
+     * Select specific fields to fetch from the ReferList
      */
-    select?: ReferSelect<ExtArgs> | null
+    select?: ReferListSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ReferInclude<ExtArgs> | null
-    where?: ReferWhereInput
+    include?: ReferListInclude<ExtArgs> | null
+    where?: ReferListWhereInput
   }
 
 
@@ -2888,979 +2773,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: UserInclude<ExtArgs> | null
-  }
-
-
-
-  /**
-   * Model Refer
-   */
-
-  export type AggregateRefer = {
-    _count: ReferCountAggregateOutputType | null
-    _min: ReferMinAggregateOutputType | null
-    _max: ReferMaxAggregateOutputType | null
-  }
-
-  export type ReferMinAggregateOutputType = {
-    id: string | null
-    own_refer_code: string | null
-    refer_contain: string | null
-    referListId: string | null
-    createAt: Date | null
-    updateAt: Date | null
-  }
-
-  export type ReferMaxAggregateOutputType = {
-    id: string | null
-    own_refer_code: string | null
-    refer_contain: string | null
-    referListId: string | null
-    createAt: Date | null
-    updateAt: Date | null
-  }
-
-  export type ReferCountAggregateOutputType = {
-    id: number
-    own_refer_code: number
-    refer_contain: number
-    referListId: number
-    createAt: number
-    updateAt: number
-    _all: number
-  }
-
-
-  export type ReferMinAggregateInputType = {
-    id?: true
-    own_refer_code?: true
-    refer_contain?: true
-    referListId?: true
-    createAt?: true
-    updateAt?: true
-  }
-
-  export type ReferMaxAggregateInputType = {
-    id?: true
-    own_refer_code?: true
-    refer_contain?: true
-    referListId?: true
-    createAt?: true
-    updateAt?: true
-  }
-
-  export type ReferCountAggregateInputType = {
-    id?: true
-    own_refer_code?: true
-    refer_contain?: true
-    referListId?: true
-    createAt?: true
-    updateAt?: true
-    _all?: true
-  }
-
-  export type ReferAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Refer to aggregate.
-     */
-    where?: ReferWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Refers to fetch.
-     */
-    orderBy?: ReferOrderByWithRelationInput | ReferOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ReferWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Refers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Refers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Refers
-    **/
-    _count?: true | ReferCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ReferMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ReferMaxAggregateInputType
-  }
-
-  export type GetReferAggregateType<T extends ReferAggregateArgs> = {
-        [P in keyof T & keyof AggregateRefer]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateRefer[P]>
-      : GetScalarType<T[P], AggregateRefer[P]>
-  }
-
-
-
-
-  export type ReferGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ReferWhereInput
-    orderBy?: ReferOrderByWithAggregationInput | ReferOrderByWithAggregationInput[]
-    by: ReferScalarFieldEnum[] | ReferScalarFieldEnum
-    having?: ReferScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ReferCountAggregateInputType | true
-    _min?: ReferMinAggregateInputType
-    _max?: ReferMaxAggregateInputType
-  }
-
-  export type ReferGroupByOutputType = {
-    id: string
-    own_refer_code: string
-    refer_contain: string
-    referListId: string
-    createAt: Date
-    updateAt: Date
-    _count: ReferCountAggregateOutputType | null
-    _min: ReferMinAggregateOutputType | null
-    _max: ReferMaxAggregateOutputType | null
-  }
-
-  type GetReferGroupByPayload<T extends ReferGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ReferGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ReferGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ReferGroupByOutputType[P]>
-            : GetScalarType<T[P], ReferGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ReferSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    own_refer_code?: boolean
-    refer_contain?: boolean
-    referListId?: boolean
-    createAt?: boolean
-    updateAt?: boolean
-    refer_list?: boolean | Refer$refer_listArgs<ExtArgs>
-    User?: boolean | Refer$UserArgs<ExtArgs>
-    _count?: boolean | ReferCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["refer"]>
-
-  export type ReferSelectScalar = {
-    id?: boolean
-    own_refer_code?: boolean
-    refer_contain?: boolean
-    referListId?: boolean
-    createAt?: boolean
-    updateAt?: boolean
-  }
-
-  export type ReferInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    refer_list?: boolean | Refer$refer_listArgs<ExtArgs>
-    User?: boolean | Refer$UserArgs<ExtArgs>
-    _count?: boolean | ReferCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-
-  export type $ReferPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    name: "Refer"
-    objects: {
-      refer_list: Prisma.$ReferListPayload<ExtArgs> | null
-      User: Prisma.$UserPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetResult<{
-      id: string
-      own_refer_code: string
-      refer_contain: string
-      referListId: string
-      createAt: Date
-      updateAt: Date
-    }, ExtArgs["result"]["refer"]>
-    composites: {}
-  }
-
-
-  type ReferGetPayload<S extends boolean | null | undefined | ReferDefaultArgs> = $Result.GetResult<Prisma.$ReferPayload, S>
-
-  type ReferCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<ReferFindManyArgs, 'select' | 'include'> & {
-      select?: ReferCountAggregateInputType | true
-    }
-
-  export interface ReferDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Refer'], meta: { name: 'Refer' } }
-    /**
-     * Find zero or one Refer that matches the filter.
-     * @param {ReferFindUniqueArgs} args - Arguments to find a Refer
-     * @example
-     * // Get one Refer
-     * const refer = await prisma.refer.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ReferFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, ReferFindUniqueArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one Refer that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {ReferFindUniqueOrThrowArgs} args - Arguments to find a Refer
-     * @example
-     * // Get one Refer
-     * const refer = await prisma.refer.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends ReferFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ReferFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first Refer that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReferFindFirstArgs} args - Arguments to find a Refer
-     * @example
-     * // Get one Refer
-     * const refer = await prisma.refer.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ReferFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, ReferFindFirstArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first Refer that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReferFindFirstOrThrowArgs} args - Arguments to find a Refer
-     * @example
-     * // Get one Refer
-     * const refer = await prisma.refer.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends ReferFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, ReferFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more Refers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReferFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Refers
-     * const refers = await prisma.refer.findMany()
-     * 
-     * // Get first 10 Refers
-     * const refers = await prisma.refer.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const referWithIdOnly = await prisma.refer.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends ReferFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ReferFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a Refer.
-     * @param {ReferCreateArgs} args - Arguments to create a Refer.
-     * @example
-     * // Create one Refer
-     * const Refer = await prisma.refer.create({
-     *   data: {
-     *     // ... data to create a Refer
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ReferCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, ReferCreateArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many Refers.
-     *     @param {ReferCreateManyArgs} args - Arguments to create many Refers.
-     *     @example
-     *     // Create many Refers
-     *     const refer = await prisma.refer.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends ReferCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ReferCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Refer.
-     * @param {ReferDeleteArgs} args - Arguments to delete one Refer.
-     * @example
-     * // Delete one Refer
-     * const Refer = await prisma.refer.delete({
-     *   where: {
-     *     // ... filter to delete one Refer
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ReferDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, ReferDeleteArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one Refer.
-     * @param {ReferUpdateArgs} args - Arguments to update one Refer.
-     * @example
-     * // Update one Refer
-     * const refer = await prisma.refer.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ReferUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, ReferUpdateArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more Refers.
-     * @param {ReferDeleteManyArgs} args - Arguments to filter Refers to delete.
-     * @example
-     * // Delete a few Refers
-     * const { count } = await prisma.refer.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ReferDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, ReferDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Refers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReferUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Refers
-     * const refer = await prisma.refer.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ReferUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, ReferUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Refer.
-     * @param {ReferUpsertArgs} args - Arguments to update or create a Refer.
-     * @example
-     * // Update or create a Refer
-     * const refer = await prisma.refer.upsert({
-     *   create: {
-     *     // ... data to create a Refer
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Refer we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ReferUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, ReferUpsertArgs<ExtArgs>>
-    ): Prisma__ReferClient<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of Refers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReferCountArgs} args - Arguments to filter Refers to count.
-     * @example
-     * // Count the number of Refers
-     * const count = await prisma.refer.count({
-     *   where: {
-     *     // ... the filter for the Refers we want to count
-     *   }
-     * })
-    **/
-    count<T extends ReferCountArgs>(
-      args?: Subset<T, ReferCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ReferCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Refer.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReferAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ReferAggregateArgs>(args: Subset<T, ReferAggregateArgs>): Prisma.PrismaPromise<GetReferAggregateType<T>>
-
-    /**
-     * Group by Refer.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReferGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ReferGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ReferGroupByArgs['orderBy'] }
-        : { orderBy?: ReferGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ReferGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReferGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Refer model
-   */
-  readonly fields: ReferFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Refer.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ReferClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    refer_list<T extends Refer$refer_listArgs<ExtArgs> = {}>(args?: Subset<T, Refer$refer_listArgs<ExtArgs>>): Prisma__ReferListClient<$Result.GetResult<Prisma.$ReferListPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
-    User<T extends Refer$UserArgs<ExtArgs> = {}>(args?: Subset<T, Refer$UserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the Refer model
-   */ 
-  interface ReferFieldRefs {
-    readonly id: FieldRef<"Refer", 'String'>
-    readonly own_refer_code: FieldRef<"Refer", 'String'>
-    readonly refer_contain: FieldRef<"Refer", 'String'>
-    readonly referListId: FieldRef<"Refer", 'String'>
-    readonly createAt: FieldRef<"Refer", 'DateTime'>
-    readonly updateAt: FieldRef<"Refer", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * Refer findUnique
-   */
-  export type ReferFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * Filter, which Refer to fetch.
-     */
-    where: ReferWhereUniqueInput
-  }
-
-
-  /**
-   * Refer findUniqueOrThrow
-   */
-  export type ReferFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * Filter, which Refer to fetch.
-     */
-    where: ReferWhereUniqueInput
-  }
-
-
-  /**
-   * Refer findFirst
-   */
-  export type ReferFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * Filter, which Refer to fetch.
-     */
-    where?: ReferWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Refers to fetch.
-     */
-    orderBy?: ReferOrderByWithRelationInput | ReferOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Refers.
-     */
-    cursor?: ReferWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Refers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Refers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Refers.
-     */
-    distinct?: ReferScalarFieldEnum | ReferScalarFieldEnum[]
-  }
-
-
-  /**
-   * Refer findFirstOrThrow
-   */
-  export type ReferFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * Filter, which Refer to fetch.
-     */
-    where?: ReferWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Refers to fetch.
-     */
-    orderBy?: ReferOrderByWithRelationInput | ReferOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Refers.
-     */
-    cursor?: ReferWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Refers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Refers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Refers.
-     */
-    distinct?: ReferScalarFieldEnum | ReferScalarFieldEnum[]
-  }
-
-
-  /**
-   * Refer findMany
-   */
-  export type ReferFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * Filter, which Refers to fetch.
-     */
-    where?: ReferWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Refers to fetch.
-     */
-    orderBy?: ReferOrderByWithRelationInput | ReferOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Refers.
-     */
-    cursor?: ReferWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Refers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Refers.
-     */
-    skip?: number
-    distinct?: ReferScalarFieldEnum | ReferScalarFieldEnum[]
-  }
-
-
-  /**
-   * Refer create
-   */
-  export type ReferCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Refer.
-     */
-    data: XOR<ReferCreateInput, ReferUncheckedCreateInput>
-  }
-
-
-  /**
-   * Refer createMany
-   */
-  export type ReferCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Refers.
-     */
-    data: ReferCreateManyInput | ReferCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * Refer update
-   */
-  export type ReferUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Refer.
-     */
-    data: XOR<ReferUpdateInput, ReferUncheckedUpdateInput>
-    /**
-     * Choose, which Refer to update.
-     */
-    where: ReferWhereUniqueInput
-  }
-
-
-  /**
-   * Refer updateMany
-   */
-  export type ReferUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Refers.
-     */
-    data: XOR<ReferUpdateManyMutationInput, ReferUncheckedUpdateManyInput>
-    /**
-     * Filter which Refers to update
-     */
-    where?: ReferWhereInput
-  }
-
-
-  /**
-   * Refer upsert
-   */
-  export type ReferUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Refer to update in case it exists.
-     */
-    where: ReferWhereUniqueInput
-    /**
-     * In case the Refer found by the `where` argument doesn't exist, create a new Refer with this data.
-     */
-    create: XOR<ReferCreateInput, ReferUncheckedCreateInput>
-    /**
-     * In case the Refer was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ReferUpdateInput, ReferUncheckedUpdateInput>
-  }
-
-
-  /**
-   * Refer delete
-   */
-  export type ReferDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
-    /**
-     * Filter which Refer to delete.
-     */
-    where: ReferWhereUniqueInput
-  }
-
-
-  /**
-   * Refer deleteMany
-   */
-  export type ReferDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Refers to delete
-     */
-    where?: ReferWhereInput
-  }
-
-
-  /**
-   * Refer.refer_list
-   */
-  export type Refer$refer_listArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ReferList
-     */
-    select?: ReferListSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferListInclude<ExtArgs> | null
-    where?: ReferListWhereInput
-  }
-
-
-  /**
-   * Refer.User
-   */
-  export type Refer$UserArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    cursor?: UserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-
-  /**
-   * Refer without action
-   */
-  export type ReferDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Refer
-     */
-    select?: ReferSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ReferInclude<ExtArgs> | null
   }
 
 
@@ -4021,7 +2933,7 @@ export namespace Prisma {
     refer?: boolean
     createAt?: boolean
     updateAt?: boolean
-    Refer?: boolean | ReferList$ReferArgs<ExtArgs>
+    user?: boolean | ReferList$userArgs<ExtArgs>
     _count?: boolean | ReferListCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referList"]>
 
@@ -4033,7 +2945,7 @@ export namespace Prisma {
   }
 
   export type ReferListInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    Refer?: boolean | ReferList$ReferArgs<ExtArgs>
+    user?: boolean | ReferList$userArgs<ExtArgs>
     _count?: boolean | ReferListCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4041,7 +2953,7 @@ export namespace Prisma {
   export type $ReferListPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "ReferList"
     objects: {
-      Refer: Prisma.$ReferPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
@@ -4413,7 +3325,7 @@ export namespace Prisma {
   export interface Prisma__ReferListClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    Refer<T extends ReferList$ReferArgs<ExtArgs> = {}>(args?: Subset<T, ReferList$ReferArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReferPayload<ExtArgs>, T, 'findMany'> | Null>;
+    user<T extends ReferList$userArgs<ExtArgs> = {}>(args?: Subset<T, ReferList$userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4759,23 +3671,23 @@ export namespace Prisma {
 
 
   /**
-   * ReferList.Refer
+   * ReferList.user
    */
-  export type ReferList$ReferArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ReferList$userArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Refer
+     * Select specific fields to fetch from the User
      */
-    select?: ReferSelect<ExtArgs> | null
+    select?: UserSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: ReferInclude<ExtArgs> | null
-    where?: ReferWhereInput
-    orderBy?: ReferOrderByWithRelationInput | ReferOrderByWithRelationInput[]
-    cursor?: ReferWhereUniqueInput
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ReferScalarFieldEnum | ReferScalarFieldEnum[]
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
 
@@ -8662,7 +7574,6 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    subCategoryId: string | null
     createAt: Date | null
     updateAt: Date | null
   }
@@ -8671,7 +7582,6 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    subCategoryId: string | null
     createAt: Date | null
     updateAt: Date | null
   }
@@ -8680,7 +7590,6 @@ export namespace Prisma {
     id: number
     name: number
     description: number
-    subCategoryId: number
     createAt: number
     updateAt: number
     _all: number
@@ -8691,7 +7600,6 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    subCategoryId?: true
     createAt?: true
     updateAt?: true
   }
@@ -8700,7 +7608,6 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    subCategoryId?: true
     createAt?: true
     updateAt?: true
   }
@@ -8709,7 +7616,6 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    subCategoryId?: true
     createAt?: true
     updateAt?: true
     _all?: true
@@ -8791,7 +7697,6 @@ export namespace Prisma {
     id: string
     name: string
     description: string
-    subCategoryId: string
     createAt: Date
     updateAt: Date
     _count: CategoryCountAggregateOutputType | null
@@ -8817,36 +7722,35 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    subCategoryId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    sub_cateogry?: boolean | SubCategoryDefaultArgs<ExtArgs>
+    SubCategory?: boolean | Category$SubCategoryArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
     id?: boolean
     name?: boolean
     description?: boolean
-    subCategoryId?: boolean
     createAt?: boolean
     updateAt?: boolean
   }
 
   export type CategoryInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    sub_cateogry?: boolean | SubCategoryDefaultArgs<ExtArgs>
+    SubCategory?: boolean | Category$SubCategoryArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
   export type $CategoryPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "Category"
     objects: {
-      sub_cateogry: Prisma.$SubCategoryPayload<ExtArgs>
+      SubCategory: Prisma.$SubCategoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
       name: string
       description: string
-      subCategoryId: string
       createAt: Date
       updateAt: Date
     }, ExtArgs["result"]["category"]>
@@ -9214,7 +8118,7 @@ export namespace Prisma {
   export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    sub_cateogry<T extends SubCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubCategoryDefaultArgs<ExtArgs>>): Prisma__SubCategoryClient<$Result.GetResult<Prisma.$SubCategoryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    SubCategory<T extends Category$SubCategoryArgs<ExtArgs> = {}>(args?: Subset<T, Category$SubCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubCategoryPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9247,7 +8151,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Category", 'String'>
     readonly name: FieldRef<"Category", 'String'>
     readonly description: FieldRef<"Category", 'String'>
-    readonly subCategoryId: FieldRef<"Category", 'String'>
     readonly createAt: FieldRef<"Category", 'DateTime'>
     readonly updateAt: FieldRef<"Category", 'DateTime'>
   }
@@ -9562,6 +8465,27 @@ export namespace Prisma {
 
 
   /**
+   * Category.SubCategory
+   */
+  export type Category$SubCategoryArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubCategory
+     */
+    select?: SubCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: SubCategoryInclude<ExtArgs> | null
+    where?: SubCategoryWhereInput
+    orderBy?: SubCategoryOrderByWithRelationInput | SubCategoryOrderByWithRelationInput[]
+    cursor?: SubCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubCategoryScalarFieldEnum | SubCategoryScalarFieldEnum[]
+  }
+
+
+  /**
    * Category without action
    */
   export type CategoryDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -9583,82 +8507,58 @@ export namespace Prisma {
 
   export type AggregateSubCategory = {
     _count: SubCategoryCountAggregateOutputType | null
-    _avg: SubCategoryAvgAggregateOutputType | null
-    _sum: SubCategorySumAggregateOutputType | null
     _min: SubCategoryMinAggregateOutputType | null
     _max: SubCategoryMaxAggregateOutputType | null
-  }
-
-  export type SubCategoryAvgAggregateOutputType = {
-    number_of_qus: number | null
-  }
-
-  export type SubCategorySumAggregateOutputType = {
-    number_of_qus: number | null
   }
 
   export type SubCategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
-    number_of_qus: number | null
-    questionId: string | null
     createAt: Date | null
     updateAt: Date | null
+    categoryId: string | null
   }
 
   export type SubCategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    number_of_qus: number | null
-    questionId: string | null
     createAt: Date | null
     updateAt: Date | null
+    categoryId: string | null
   }
 
   export type SubCategoryCountAggregateOutputType = {
     id: number
     name: number
-    number_of_qus: number
-    questionId: number
     createAt: number
     updateAt: number
+    categoryId: number
     _all: number
   }
 
 
-  export type SubCategoryAvgAggregateInputType = {
-    number_of_qus?: true
-  }
-
-  export type SubCategorySumAggregateInputType = {
-    number_of_qus?: true
-  }
-
   export type SubCategoryMinAggregateInputType = {
     id?: true
     name?: true
-    number_of_qus?: true
-    questionId?: true
     createAt?: true
     updateAt?: true
+    categoryId?: true
   }
 
   export type SubCategoryMaxAggregateInputType = {
     id?: true
     name?: true
-    number_of_qus?: true
-    questionId?: true
     createAt?: true
     updateAt?: true
+    categoryId?: true
   }
 
   export type SubCategoryCountAggregateInputType = {
     id?: true
     name?: true
-    number_of_qus?: true
-    questionId?: true
     createAt?: true
     updateAt?: true
+    categoryId?: true
     _all?: true
   }
 
@@ -9700,18 +8600,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: SubCategoryAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: SubCategorySumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: SubCategoryMinAggregateInputType
@@ -9742,8 +8630,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: SubCategoryCountAggregateInputType | true
-    _avg?: SubCategoryAvgAggregateInputType
-    _sum?: SubCategorySumAggregateInputType
     _min?: SubCategoryMinAggregateInputType
     _max?: SubCategoryMaxAggregateInputType
   }
@@ -9751,13 +8637,10 @@ export namespace Prisma {
   export type SubCategoryGroupByOutputType = {
     id: string
     name: string
-    number_of_qus: number
-    questionId: string
     createAt: Date
     updateAt: Date
+    categoryId: string
     _count: SubCategoryCountAggregateOutputType | null
-    _avg: SubCategoryAvgAggregateOutputType | null
-    _sum: SubCategorySumAggregateOutputType | null
     _min: SubCategoryMinAggregateOutputType | null
     _max: SubCategoryMaxAggregateOutputType | null
   }
@@ -9779,27 +8662,25 @@ export namespace Prisma {
   export type SubCategorySelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    number_of_qus?: boolean
-    questionId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-    Category?: boolean | SubCategory$CategoryArgs<ExtArgs>
+    categoryId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    Question?: boolean | SubCategory$QuestionArgs<ExtArgs>
     _count?: boolean | SubCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subCategory"]>
 
   export type SubCategorySelectScalar = {
     id?: boolean
     name?: boolean
-    number_of_qus?: boolean
-    questionId?: boolean
     createAt?: boolean
     updateAt?: boolean
+    categoryId?: boolean
   }
 
   export type SubCategoryInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    question?: boolean | QuestionDefaultArgs<ExtArgs>
-    Category?: boolean | SubCategory$CategoryArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    Question?: boolean | SubCategory$QuestionArgs<ExtArgs>
     _count?: boolean | SubCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9807,16 +8688,15 @@ export namespace Prisma {
   export type $SubCategoryPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "SubCategory"
     objects: {
-      question: Prisma.$QuestionPayload<ExtArgs>
-      Category: Prisma.$CategoryPayload<ExtArgs>[]
+      category: Prisma.$CategoryPayload<ExtArgs>
+      Question: Prisma.$QuestionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetResult<{
       id: string
       name: string
-      number_of_qus: number
-      questionId: string
       createAt: Date
       updateAt: Date
+      categoryId: string
     }, ExtArgs["result"]["subCategory"]>
     composites: {}
   }
@@ -10182,9 +9062,9 @@ export namespace Prisma {
   export interface Prisma__SubCategoryClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    question<T extends QuestionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuestionDefaultArgs<ExtArgs>>): Prisma__QuestionClient<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    Category<T extends SubCategory$CategoryArgs<ExtArgs> = {}>(args?: Subset<T, SubCategory$CategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, 'findMany'> | Null>;
+    Question<T extends SubCategory$QuestionArgs<ExtArgs> = {}>(args?: Subset<T, SubCategory$QuestionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10216,10 +9096,9 @@ export namespace Prisma {
   interface SubCategoryFieldRefs {
     readonly id: FieldRef<"SubCategory", 'String'>
     readonly name: FieldRef<"SubCategory", 'String'>
-    readonly number_of_qus: FieldRef<"SubCategory", 'Int'>
-    readonly questionId: FieldRef<"SubCategory", 'String'>
     readonly createAt: FieldRef<"SubCategory", 'DateTime'>
     readonly updateAt: FieldRef<"SubCategory", 'DateTime'>
+    readonly categoryId: FieldRef<"SubCategory", 'String'>
   }
     
 
@@ -10532,23 +9411,23 @@ export namespace Prisma {
 
 
   /**
-   * SubCategory.Category
+   * SubCategory.Question
    */
-  export type SubCategory$CategoryArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type SubCategory$QuestionArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Category
+     * Select specific fields to fetch from the Question
      */
-    select?: CategorySelect<ExtArgs> | null
+    select?: QuestionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: CategoryInclude<ExtArgs> | null
-    where?: CategoryWhereInput
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
-    cursor?: CategoryWhereUniqueInput
+    include?: QuestionInclude<ExtArgs> | null
+    where?: QuestionWhereInput
+    orderBy?: QuestionOrderByWithRelationInput | QuestionOrderByWithRelationInput[]
+    cursor?: QuestionWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+    distinct?: QuestionScalarFieldEnum | QuestionScalarFieldEnum[]
   }
 
 
@@ -10582,6 +9461,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     ans: string | null
+    subCategoryId: string | null
     createAt: Date | null
     updateAt: Date | null
   }
@@ -10590,6 +9470,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     ans: string | null
+    subCategoryId: string | null
     createAt: Date | null
     updateAt: Date | null
   }
@@ -10599,6 +9480,7 @@ export namespace Prisma {
     name: number
     option: number
     ans: number
+    subCategoryId: number
     createAt: number
     updateAt: number
     _all: number
@@ -10609,6 +9491,7 @@ export namespace Prisma {
     id?: true
     name?: true
     ans?: true
+    subCategoryId?: true
     createAt?: true
     updateAt?: true
   }
@@ -10617,6 +9500,7 @@ export namespace Prisma {
     id?: true
     name?: true
     ans?: true
+    subCategoryId?: true
     createAt?: true
     updateAt?: true
   }
@@ -10626,6 +9510,7 @@ export namespace Prisma {
     name?: true
     option?: true
     ans?: true
+    subCategoryId?: true
     createAt?: true
     updateAt?: true
     _all?: true
@@ -10708,6 +9593,7 @@ export namespace Prisma {
     name: string
     option: string[]
     ans: string
+    subCategoryId: string
     createAt: Date
     updateAt: Date
     _count: QuestionCountAggregateOutputType | null
@@ -10734,11 +9620,11 @@ export namespace Prisma {
     name?: boolean
     option?: boolean
     ans?: boolean
+    subCategoryId?: boolean
     createAt?: boolean
     updateAt?: boolean
-    SubCategory?: boolean | Question$SubCategoryArgs<ExtArgs>
+    sub_category?: boolean | SubCategoryDefaultArgs<ExtArgs>
     AnsQus?: boolean | Question$AnsQusArgs<ExtArgs>
-    _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["question"]>
 
   export type QuestionSelectScalar = {
@@ -10746,28 +9632,29 @@ export namespace Prisma {
     name?: boolean
     option?: boolean
     ans?: boolean
+    subCategoryId?: boolean
     createAt?: boolean
     updateAt?: boolean
   }
 
   export type QuestionInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    SubCategory?: boolean | Question$SubCategoryArgs<ExtArgs>
+    sub_category?: boolean | SubCategoryDefaultArgs<ExtArgs>
     AnsQus?: boolean | Question$AnsQusArgs<ExtArgs>
-    _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
   export type $QuestionPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "Question"
     objects: {
-      SubCategory: Prisma.$SubCategoryPayload<ExtArgs>[]
-      AnsQus: Prisma.$AnsQusPayload<ExtArgs>[]
+      sub_category: Prisma.$SubCategoryPayload<ExtArgs>
+      AnsQus: Prisma.$AnsQusPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetResult<{
       id: string
       name: string
       option: string[]
       ans: string
+      subCategoryId: string
       createAt: Date
       updateAt: Date
     }, ExtArgs["result"]["question"]>
@@ -11135,9 +10022,9 @@ export namespace Prisma {
   export interface Prisma__QuestionClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    SubCategory<T extends Question$SubCategoryArgs<ExtArgs> = {}>(args?: Subset<T, Question$SubCategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubCategoryPayload<ExtArgs>, T, 'findMany'> | Null>;
+    sub_category<T extends SubCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubCategoryDefaultArgs<ExtArgs>>): Prisma__SubCategoryClient<$Result.GetResult<Prisma.$SubCategoryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    AnsQus<T extends Question$AnsQusArgs<ExtArgs> = {}>(args?: Subset<T, Question$AnsQusArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnsQusPayload<ExtArgs>, T, 'findMany'> | Null>;
+    AnsQus<T extends Question$AnsQusArgs<ExtArgs> = {}>(args?: Subset<T, Question$AnsQusArgs<ExtArgs>>): Prisma__AnsQusClient<$Result.GetResult<Prisma.$AnsQusPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -11171,6 +10058,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Question", 'String'>
     readonly option: FieldRef<"Question", 'String[]'>
     readonly ans: FieldRef<"Question", 'String'>
+    readonly subCategoryId: FieldRef<"Question", 'String'>
     readonly createAt: FieldRef<"Question", 'DateTime'>
     readonly updateAt: FieldRef<"Question", 'DateTime'>
   }
@@ -11485,27 +10373,6 @@ export namespace Prisma {
 
 
   /**
-   * Question.SubCategory
-   */
-  export type Question$SubCategoryArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubCategory
-     */
-    select?: SubCategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: SubCategoryInclude<ExtArgs> | null
-    where?: SubCategoryWhereInput
-    orderBy?: SubCategoryOrderByWithRelationInput | SubCategoryOrderByWithRelationInput[]
-    cursor?: SubCategoryWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SubCategoryScalarFieldEnum | SubCategoryScalarFieldEnum[]
-  }
-
-
-  /**
    * Question.AnsQus
    */
   export type Question$AnsQusArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -11518,11 +10385,6 @@ export namespace Prisma {
      */
     include?: AnsQusInclude<ExtArgs> | null
     where?: AnsQusWhereInput
-    orderBy?: AnsQusOrderByWithRelationInput | AnsQusOrderByWithRelationInput[]
-    cursor?: AnsQusWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AnsQusScalarFieldEnum | AnsQusScalarFieldEnum[]
   }
 
 
@@ -11561,30 +10423,19 @@ export namespace Prisma {
     name: 'name',
     picture: 'picture',
     select_category: 'select_category',
-    referId: 'referId',
+    own_refer_code: 'own_refer_code',
+    refer_contain: 'refer_contain',
+    referListId: 'referListId',
     earningId: 'earningId',
     resultId: 'resultId',
     paymentId: 'paymentId',
     email: 'email',
-    password: 'password',
-    phone: 'phone',
+    api_auth_key: 'api_auth_key',
     createAt: 'createAt',
     updateAt: 'updateAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-  export const ReferScalarFieldEnum: {
-    id: 'id',
-    own_refer_code: 'own_refer_code',
-    refer_contain: 'refer_contain',
-    referListId: 'referListId',
-    createAt: 'createAt',
-    updateAt: 'updateAt'
-  };
-
-  export type ReferScalarFieldEnum = (typeof ReferScalarFieldEnum)[keyof typeof ReferScalarFieldEnum]
 
 
   export const ReferListScalarFieldEnum: {
@@ -11644,7 +10495,6 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
-    subCategoryId: 'subCategoryId',
     createAt: 'createAt',
     updateAt: 'updateAt'
   };
@@ -11655,10 +10505,9 @@ export namespace Prisma {
   export const SubCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    number_of_qus: 'number_of_qus',
-    questionId: 'questionId',
     createAt: 'createAt',
-    updateAt: 'updateAt'
+    updateAt: 'updateAt',
+    categoryId: 'categoryId'
   };
 
   export type SubCategoryScalarFieldEnum = (typeof SubCategoryScalarFieldEnum)[keyof typeof SubCategoryScalarFieldEnum]
@@ -11669,6 +10518,7 @@ export namespace Prisma {
     name: 'name',
     option: 'option',
     ans: 'ans',
+    subCategoryId: 'subCategoryId',
     createAt: 'createAt',
     updateAt: 'updateAt'
   };
@@ -11772,19 +10622,20 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     picture?: StringNullableFilter<"User"> | string | null
     select_category?: StringNullableFilter<"User"> | string | null
-    referId?: StringFilter<"User"> | string
+    own_refer_code?: StringNullableFilter<"User"> | string | null
+    refer_contain?: StringNullableFilter<"User"> | string | null
+    referListId?: StringNullableFilter<"User"> | string | null
     earningId?: StringFilter<"User"> | string
     resultId?: StringFilter<"User"> | string
     paymentId?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    phone?: StringFilter<"User"> | string
+    api_auth_key?: StringFilter<"User"> | string
     createAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
     earning?: XOR<EarningRelationFilter, EarningWhereInput>
     payment?: XOR<PaymentRelationFilter, PaymentWhereInput>
-    refer?: XOR<ReferNullableRelationFilter, ReferWhereInput> | null
     result?: XOR<ResultRelationFilter, ResultWhereInput>
+    ReferList?: XOR<ReferListNullableRelationFilter, ReferListWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -11792,56 +10643,59 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     picture?: SortOrderInput | SortOrder
     select_category?: SortOrderInput | SortOrder
-    referId?: SortOrder
+    own_refer_code?: SortOrderInput | SortOrder
+    refer_contain?: SortOrderInput | SortOrder
+    referListId?: SortOrderInput | SortOrder
     earningId?: SortOrder
     resultId?: SortOrder
     paymentId?: SortOrder
     email?: SortOrder
-    password?: SortOrder
-    phone?: SortOrder
+    api_auth_key?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     earning?: EarningOrderByWithRelationInput
     payment?: PaymentOrderByWithRelationInput
-    refer?: ReferOrderByWithRelationInput
     result?: ResultOrderByWithRelationInput
+    ReferList?: ReferListOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
-    phone?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     picture?: StringNullableFilter<"User"> | string | null
     select_category?: StringNullableFilter<"User"> | string | null
-    referId?: StringFilter<"User"> | string
+    own_refer_code?: StringNullableFilter<"User"> | string | null
+    refer_contain?: StringNullableFilter<"User"> | string | null
+    referListId?: StringNullableFilter<"User"> | string | null
     earningId?: StringFilter<"User"> | string
     resultId?: StringFilter<"User"> | string
     paymentId?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+    api_auth_key?: StringFilter<"User"> | string
     createAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
     earning?: XOR<EarningRelationFilter, EarningWhereInput>
     payment?: XOR<PaymentRelationFilter, PaymentWhereInput>
-    refer?: XOR<ReferNullableRelationFilter, ReferWhereInput> | null
     result?: XOR<ResultRelationFilter, ResultWhereInput>
-  }, "id" | "email" | "phone">
+    ReferList?: XOR<ReferListNullableRelationFilter, ReferListWhereInput> | null
+  }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     picture?: SortOrderInput | SortOrder
     select_category?: SortOrderInput | SortOrder
-    referId?: SortOrder
+    own_refer_code?: SortOrderInput | SortOrder
+    refer_contain?: SortOrderInput | SortOrder
+    referListId?: SortOrderInput | SortOrder
     earningId?: SortOrder
     resultId?: SortOrder
     paymentId?: SortOrder
     email?: SortOrder
-    password?: SortOrder
-    phone?: SortOrder
+    api_auth_key?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -11857,78 +10711,16 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     picture?: StringNullableWithAggregatesFilter<"User"> | string | null
     select_category?: StringNullableWithAggregatesFilter<"User"> | string | null
-    referId?: StringWithAggregatesFilter<"User"> | string
+    own_refer_code?: StringNullableWithAggregatesFilter<"User"> | string | null
+    refer_contain?: StringNullableWithAggregatesFilter<"User"> | string | null
+    referListId?: StringNullableWithAggregatesFilter<"User"> | string | null
     earningId?: StringWithAggregatesFilter<"User"> | string
     resultId?: StringWithAggregatesFilter<"User"> | string
     paymentId?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    password?: StringWithAggregatesFilter<"User"> | string
-    phone?: StringWithAggregatesFilter<"User"> | string
+    api_auth_key?: StringWithAggregatesFilter<"User"> | string
     createAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-  }
-
-  export type ReferWhereInput = {
-    AND?: ReferWhereInput | ReferWhereInput[]
-    OR?: ReferWhereInput[]
-    NOT?: ReferWhereInput | ReferWhereInput[]
-    id?: StringFilter<"Refer"> | string
-    own_refer_code?: StringFilter<"Refer"> | string
-    refer_contain?: StringFilter<"Refer"> | string
-    referListId?: StringFilter<"Refer"> | string
-    createAt?: DateTimeFilter<"Refer"> | Date | string
-    updateAt?: DateTimeFilter<"Refer"> | Date | string
-    refer_list?: XOR<ReferListNullableRelationFilter, ReferListWhereInput> | null
-    User?: UserListRelationFilter
-  }
-
-  export type ReferOrderByWithRelationInput = {
-    id?: SortOrder
-    own_refer_code?: SortOrder
-    refer_contain?: SortOrder
-    referListId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-    refer_list?: ReferListOrderByWithRelationInput
-    User?: UserOrderByRelationAggregateInput
-  }
-
-  export type ReferWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    referListId?: string
-    AND?: ReferWhereInput | ReferWhereInput[]
-    OR?: ReferWhereInput[]
-    NOT?: ReferWhereInput | ReferWhereInput[]
-    own_refer_code?: StringFilter<"Refer"> | string
-    refer_contain?: StringFilter<"Refer"> | string
-    createAt?: DateTimeFilter<"Refer"> | Date | string
-    updateAt?: DateTimeFilter<"Refer"> | Date | string
-    refer_list?: XOR<ReferListNullableRelationFilter, ReferListWhereInput> | null
-    User?: UserListRelationFilter
-  }, "id" | "referListId">
-
-  export type ReferOrderByWithAggregationInput = {
-    id?: SortOrder
-    own_refer_code?: SortOrder
-    refer_contain?: SortOrder
-    referListId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-    _count?: ReferCountOrderByAggregateInput
-    _max?: ReferMaxOrderByAggregateInput
-    _min?: ReferMinOrderByAggregateInput
-  }
-
-  export type ReferScalarWhereWithAggregatesInput = {
-    AND?: ReferScalarWhereWithAggregatesInput | ReferScalarWhereWithAggregatesInput[]
-    OR?: ReferScalarWhereWithAggregatesInput[]
-    NOT?: ReferScalarWhereWithAggregatesInput | ReferScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Refer"> | string
-    own_refer_code?: StringWithAggregatesFilter<"Refer"> | string
-    refer_contain?: StringWithAggregatesFilter<"Refer"> | string
-    referListId?: StringWithAggregatesFilter<"Refer"> | string
-    createAt?: DateTimeWithAggregatesFilter<"Refer"> | Date | string
-    updateAt?: DateTimeWithAggregatesFilter<"Refer"> | Date | string
   }
 
   export type ReferListWhereInput = {
@@ -11939,7 +10731,7 @@ export namespace Prisma {
     refer?: StringFilter<"ReferList"> | string
     createAt?: DateTimeFilter<"ReferList"> | Date | string
     updateAt?: DateTimeFilter<"ReferList"> | Date | string
-    Refer?: ReferListRelationFilter
+    user?: UserListRelationFilter
   }
 
   export type ReferListOrderByWithRelationInput = {
@@ -11947,7 +10739,7 @@ export namespace Prisma {
     refer?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    Refer?: ReferOrderByRelationAggregateInput
+    user?: UserOrderByRelationAggregateInput
   }
 
   export type ReferListWhereUniqueInput = Prisma.AtLeast<{
@@ -11958,7 +10750,7 @@ export namespace Prisma {
     refer?: StringFilter<"ReferList"> | string
     createAt?: DateTimeFilter<"ReferList"> | Date | string
     updateAt?: DateTimeFilter<"ReferList"> | Date | string
-    Refer?: ReferListRelationFilter
+    user?: UserListRelationFilter
   }, "id">
 
   export type ReferListOrderByWithAggregationInput = {
@@ -12213,40 +11005,36 @@ export namespace Prisma {
     id?: StringFilter<"Category"> | string
     name?: StringFilter<"Category"> | string
     description?: StringFilter<"Category"> | string
-    subCategoryId?: StringFilter<"Category"> | string
     createAt?: DateTimeFilter<"Category"> | Date | string
     updateAt?: DateTimeFilter<"Category"> | Date | string
-    sub_cateogry?: XOR<SubCategoryRelationFilter, SubCategoryWhereInput>
+    SubCategory?: SubCategoryListRelationFilter
   }
 
   export type CategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    subCategoryId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    sub_cateogry?: SubCategoryOrderByWithRelationInput
+    SubCategory?: SubCategoryOrderByRelationAggregateInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name?: string
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
-    name?: StringFilter<"Category"> | string
     description?: StringFilter<"Category"> | string
-    subCategoryId?: StringFilter<"Category"> | string
     createAt?: DateTimeFilter<"Category"> | Date | string
     updateAt?: DateTimeFilter<"Category"> | Date | string
-    sub_cateogry?: XOR<SubCategoryRelationFilter, SubCategoryWhereInput>
-  }, "id">
+    SubCategory?: SubCategoryListRelationFilter
+  }, "id" | "name">
 
   export type CategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    subCategoryId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     _count?: CategoryCountOrderByAggregateInput
@@ -12261,7 +11049,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Category"> | string
     name?: StringWithAggregatesFilter<"Category"> | string
     description?: StringWithAggregatesFilter<"Category"> | string
-    subCategoryId?: StringWithAggregatesFilter<"Category"> | string
     createAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
@@ -12272,23 +11059,21 @@ export namespace Prisma {
     NOT?: SubCategoryWhereInput | SubCategoryWhereInput[]
     id?: StringFilter<"SubCategory"> | string
     name?: StringFilter<"SubCategory"> | string
-    number_of_qus?: IntFilter<"SubCategory"> | number
-    questionId?: StringFilter<"SubCategory"> | string
     createAt?: DateTimeFilter<"SubCategory"> | Date | string
     updateAt?: DateTimeFilter<"SubCategory"> | Date | string
-    question?: XOR<QuestionRelationFilter, QuestionWhereInput>
-    Category?: CategoryListRelationFilter
+    categoryId?: StringFilter<"SubCategory"> | string
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    Question?: QuestionListRelationFilter
   }
 
   export type SubCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    number_of_qus?: SortOrder
-    questionId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    question?: QuestionOrderByWithRelationInput
-    Category?: CategoryOrderByRelationAggregateInput
+    categoryId?: SortOrder
+    category?: CategoryOrderByWithRelationInput
+    Question?: QuestionOrderByRelationAggregateInput
   }
 
   export type SubCategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -12297,26 +11082,22 @@ export namespace Prisma {
     OR?: SubCategoryWhereInput[]
     NOT?: SubCategoryWhereInput | SubCategoryWhereInput[]
     name?: StringFilter<"SubCategory"> | string
-    number_of_qus?: IntFilter<"SubCategory"> | number
-    questionId?: StringFilter<"SubCategory"> | string
     createAt?: DateTimeFilter<"SubCategory"> | Date | string
     updateAt?: DateTimeFilter<"SubCategory"> | Date | string
-    question?: XOR<QuestionRelationFilter, QuestionWhereInput>
-    Category?: CategoryListRelationFilter
+    categoryId?: StringFilter<"SubCategory"> | string
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    Question?: QuestionListRelationFilter
   }, "id">
 
   export type SubCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    number_of_qus?: SortOrder
-    questionId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
+    categoryId?: SortOrder
     _count?: SubCategoryCountOrderByAggregateInput
-    _avg?: SubCategoryAvgOrderByAggregateInput
     _max?: SubCategoryMaxOrderByAggregateInput
     _min?: SubCategoryMinOrderByAggregateInput
-    _sum?: SubCategorySumOrderByAggregateInput
   }
 
   export type SubCategoryScalarWhereWithAggregatesInput = {
@@ -12325,10 +11106,9 @@ export namespace Prisma {
     NOT?: SubCategoryScalarWhereWithAggregatesInput | SubCategoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"SubCategory"> | string
     name?: StringWithAggregatesFilter<"SubCategory"> | string
-    number_of_qus?: IntWithAggregatesFilter<"SubCategory"> | number
-    questionId?: StringWithAggregatesFilter<"SubCategory"> | string
     createAt?: DateTimeWithAggregatesFilter<"SubCategory"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"SubCategory"> | Date | string
+    categoryId?: StringWithAggregatesFilter<"SubCategory"> | string
   }
 
   export type QuestionWhereInput = {
@@ -12339,10 +11119,11 @@ export namespace Prisma {
     name?: StringFilter<"Question"> | string
     option?: StringNullableListFilter<"Question">
     ans?: StringFilter<"Question"> | string
+    subCategoryId?: StringFilter<"Question"> | string
     createAt?: DateTimeFilter<"Question"> | Date | string
     updateAt?: DateTimeFilter<"Question"> | Date | string
-    SubCategory?: SubCategoryListRelationFilter
-    AnsQus?: AnsQusListRelationFilter
+    sub_category?: XOR<SubCategoryRelationFilter, SubCategoryWhereInput>
+    AnsQus?: XOR<AnsQusNullableRelationFilter, AnsQusWhereInput> | null
   }
 
   export type QuestionOrderByWithRelationInput = {
@@ -12350,10 +11131,11 @@ export namespace Prisma {
     name?: SortOrder
     option?: SortOrder
     ans?: SortOrder
+    subCategoryId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
-    SubCategory?: SubCategoryOrderByRelationAggregateInput
-    AnsQus?: AnsQusOrderByRelationAggregateInput
+    sub_category?: SubCategoryOrderByWithRelationInput
+    AnsQus?: AnsQusOrderByWithRelationInput
   }
 
   export type QuestionWhereUniqueInput = Prisma.AtLeast<{
@@ -12364,10 +11146,11 @@ export namespace Prisma {
     name?: StringFilter<"Question"> | string
     option?: StringNullableListFilter<"Question">
     ans?: StringFilter<"Question"> | string
+    subCategoryId?: StringFilter<"Question"> | string
     createAt?: DateTimeFilter<"Question"> | Date | string
     updateAt?: DateTimeFilter<"Question"> | Date | string
-    SubCategory?: SubCategoryListRelationFilter
-    AnsQus?: AnsQusListRelationFilter
+    sub_category?: XOR<SubCategoryRelationFilter, SubCategoryWhereInput>
+    AnsQus?: XOR<AnsQusNullableRelationFilter, AnsQusWhereInput> | null
   }, "id">
 
   export type QuestionOrderByWithAggregationInput = {
@@ -12375,6 +11158,7 @@ export namespace Prisma {
     name?: SortOrder
     option?: SortOrder
     ans?: SortOrder
+    subCategoryId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
     _count?: QuestionCountOrderByAggregateInput
@@ -12390,6 +11174,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Question"> | string
     option?: StringNullableListFilter<"Question">
     ans?: StringWithAggregatesFilter<"Question"> | string
+    subCategoryId?: StringWithAggregatesFilter<"Question"> | string
     createAt?: DateTimeWithAggregatesFilter<"Question"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"Question"> | Date | string
   }
@@ -12399,15 +11184,16 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
+    own_refer_code?: string | null
+    refer_contain?: string | null
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
     earning: EarningCreateNestedOneWithoutUserInput
     payment: PaymentCreateNestedOneWithoutUserInput
-    refer?: ReferCreateNestedOneWithoutUserInput
     result: ResultCreateNestedOneWithoutUserInput
+    ReferList?: ReferListCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -12415,13 +11201,14 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     earningId: string
     resultId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -12431,15 +11218,16 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     earning?: EarningUpdateOneRequiredWithoutUserNestedInput
     payment?: PaymentUpdateOneRequiredWithoutUserNestedInput
-    refer?: ReferUpdateOneWithoutUserNestedInput
     result?: ResultUpdateOneRequiredWithoutUserNestedInput
+    ReferList?: ReferListUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -12447,13 +11235,14 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     resultId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12463,13 +11252,14 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     earningId: string
     resultId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -12479,9 +11269,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12491,79 +11282,14 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     resultId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ReferCreateInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    refer_list?: ReferListCreateNestedOneWithoutReferInput
-    User?: UserCreateNestedManyWithoutReferInput
-  }
-
-  export type ReferUncheckedCreateInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    referListId: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    User?: UserUncheckedCreateNestedManyWithoutReferInput
-  }
-
-  export type ReferUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    refer_list?: ReferListUpdateOneWithoutReferNestedInput
-    User?: UserUpdateManyWithoutReferNestedInput
-  }
-
-  export type ReferUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    referListId?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    User?: UserUncheckedUpdateManyWithoutReferNestedInput
-  }
-
-  export type ReferCreateManyInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    referListId: string
-    createAt?: Date | string
-    updateAt?: Date | string
-  }
-
-  export type ReferUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ReferUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    referListId?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12573,7 +11299,7 @@ export namespace Prisma {
     refer: string
     createAt?: Date | string
     updateAt?: Date | string
-    Refer?: ReferCreateNestedManyWithoutRefer_listInput
+    user?: UserCreateNestedManyWithoutReferListInput
   }
 
   export type ReferListUncheckedCreateInput = {
@@ -12581,7 +11307,7 @@ export namespace Prisma {
     refer: string
     createAt?: Date | string
     updateAt?: Date | string
-    Refer?: ReferUncheckedCreateNestedManyWithoutRefer_listInput
+    user?: UserUncheckedCreateNestedManyWithoutReferListInput
   }
 
   export type ReferListUpdateInput = {
@@ -12589,7 +11315,7 @@ export namespace Prisma {
     refer?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Refer?: ReferUpdateManyWithoutRefer_listNestedInput
+    user?: UserUpdateManyWithoutReferListNestedInput
   }
 
   export type ReferListUncheckedUpdateInput = {
@@ -12597,7 +11323,7 @@ export namespace Prisma {
     refer?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Refer?: ReferUncheckedUpdateManyWithoutRefer_listNestedInput
+    user?: UserUncheckedUpdateManyWithoutReferListNestedInput
   }
 
   export type ReferListCreateManyInput = {
@@ -12858,16 +11584,16 @@ export namespace Prisma {
     description: string
     createAt?: Date | string
     updateAt?: Date | string
-    sub_cateogry: SubCategoryCreateNestedOneWithoutCategoryInput
+    SubCategory?: SubCategoryCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
     id?: string
     name: string
     description: string
-    subCategoryId: string
     createAt?: Date | string
     updateAt?: Date | string
+    SubCategory?: SubCategoryUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
@@ -12876,23 +11602,22 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sub_cateogry?: SubCategoryUpdateOneRequiredWithoutCategoryNestedInput
+    SubCategory?: SubCategoryUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    subCategoryId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    SubCategory?: SubCategoryUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
     id?: string
     name: string
     description: string
-    subCategoryId: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -12909,7 +11634,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    subCategoryId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12917,56 +11641,50 @@ export namespace Prisma {
   export type SubCategoryCreateInput = {
     id?: string
     name: string
-    number_of_qus: number
     createAt?: Date | string
     updateAt?: Date | string
-    question: QuestionCreateNestedOneWithoutSubCategoryInput
-    Category?: CategoryCreateNestedManyWithoutSub_cateogryInput
+    category: CategoryCreateNestedOneWithoutSubCategoryInput
+    Question?: QuestionCreateNestedManyWithoutSub_categoryInput
   }
 
   export type SubCategoryUncheckedCreateInput = {
     id?: string
     name: string
-    number_of_qus: number
-    questionId: string
     createAt?: Date | string
     updateAt?: Date | string
-    Category?: CategoryUncheckedCreateNestedManyWithoutSub_cateogryInput
+    categoryId: string
+    Question?: QuestionUncheckedCreateNestedManyWithoutSub_categoryInput
   }
 
   export type SubCategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    question?: QuestionUpdateOneRequiredWithoutSubCategoryNestedInput
-    Category?: CategoryUpdateManyWithoutSub_cateogryNestedInput
+    category?: CategoryUpdateOneRequiredWithoutSubCategoryNestedInput
+    Question?: QuestionUpdateManyWithoutSub_categoryNestedInput
   }
 
   export type SubCategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
-    questionId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Category?: CategoryUncheckedUpdateManyWithoutSub_cateogryNestedInput
+    categoryId?: StringFieldUpdateOperationsInput | string
+    Question?: QuestionUncheckedUpdateManyWithoutSub_categoryNestedInput
   }
 
   export type SubCategoryCreateManyInput = {
     id?: string
     name: string
-    number_of_qus: number
-    questionId: string
     createAt?: Date | string
     updateAt?: Date | string
+    categoryId: string
   }
 
   export type SubCategoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12974,10 +11692,9 @@ export namespace Prisma {
   export type SubCategoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
-    questionId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categoryId?: StringFieldUpdateOperationsInput | string
   }
 
   export type QuestionCreateInput = {
@@ -12987,8 +11704,8 @@ export namespace Prisma {
     ans: string
     createAt?: Date | string
     updateAt?: Date | string
-    SubCategory?: SubCategoryCreateNestedManyWithoutQuestionInput
-    AnsQus?: AnsQusCreateNestedManyWithoutQusInput
+    sub_category: SubCategoryCreateNestedOneWithoutQuestionInput
+    AnsQus?: AnsQusCreateNestedOneWithoutQusInput
   }
 
   export type QuestionUncheckedCreateInput = {
@@ -12996,10 +11713,10 @@ export namespace Prisma {
     name: string
     option?: QuestionCreateoptionInput | string[]
     ans: string
+    subCategoryId: string
     createAt?: Date | string
     updateAt?: Date | string
-    SubCategory?: SubCategoryUncheckedCreateNestedManyWithoutQuestionInput
-    AnsQus?: AnsQusUncheckedCreateNestedManyWithoutQusInput
+    AnsQus?: AnsQusUncheckedCreateNestedOneWithoutQusInput
   }
 
   export type QuestionUpdateInput = {
@@ -13009,8 +11726,8 @@ export namespace Prisma {
     ans?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    SubCategory?: SubCategoryUpdateManyWithoutQuestionNestedInput
-    AnsQus?: AnsQusUpdateManyWithoutQusNestedInput
+    sub_category?: SubCategoryUpdateOneRequiredWithoutQuestionNestedInput
+    AnsQus?: AnsQusUpdateOneWithoutQusNestedInput
   }
 
   export type QuestionUncheckedUpdateInput = {
@@ -13018,10 +11735,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     option?: QuestionUpdateoptionInput | string[]
     ans?: StringFieldUpdateOperationsInput | string
+    subCategoryId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    SubCategory?: SubCategoryUncheckedUpdateManyWithoutQuestionNestedInput
-    AnsQus?: AnsQusUncheckedUpdateManyWithoutQusNestedInput
+    AnsQus?: AnsQusUncheckedUpdateOneWithoutQusNestedInput
   }
 
   export type QuestionCreateManyInput = {
@@ -13029,6 +11746,7 @@ export namespace Prisma {
     name: string
     option?: QuestionCreateoptionInput | string[]
     ans: string
+    subCategoryId: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -13047,6 +11765,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     option?: QuestionUpdateoptionInput | string[]
     ans?: StringFieldUpdateOperationsInput | string
+    subCategoryId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13102,14 +11821,14 @@ export namespace Prisma {
     isNot?: PaymentWhereInput
   }
 
-  export type ReferNullableRelationFilter = {
-    is?: ReferWhereInput | null
-    isNot?: ReferWhereInput | null
-  }
-
   export type ResultRelationFilter = {
     is?: ResultWhereInput
     isNot?: ResultWhereInput
+  }
+
+  export type ReferListNullableRelationFilter = {
+    is?: ReferListWhereInput | null
+    isNot?: ReferListWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -13122,13 +11841,14 @@ export namespace Prisma {
     name?: SortOrder
     picture?: SortOrder
     select_category?: SortOrder
-    referId?: SortOrder
+    own_refer_code?: SortOrder
+    refer_contain?: SortOrder
+    referListId?: SortOrder
     earningId?: SortOrder
     resultId?: SortOrder
     paymentId?: SortOrder
     email?: SortOrder
-    password?: SortOrder
-    phone?: SortOrder
+    api_auth_key?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
   }
@@ -13138,13 +11858,14 @@ export namespace Prisma {
     name?: SortOrder
     picture?: SortOrder
     select_category?: SortOrder
-    referId?: SortOrder
+    own_refer_code?: SortOrder
+    refer_contain?: SortOrder
+    referListId?: SortOrder
     earningId?: SortOrder
     resultId?: SortOrder
     paymentId?: SortOrder
     email?: SortOrder
-    password?: SortOrder
-    phone?: SortOrder
+    api_auth_key?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
   }
@@ -13154,13 +11875,14 @@ export namespace Prisma {
     name?: SortOrder
     picture?: SortOrder
     select_category?: SortOrder
-    referId?: SortOrder
+    own_refer_code?: SortOrder
+    refer_contain?: SortOrder
+    referListId?: SortOrder
     earningId?: SortOrder
     resultId?: SortOrder
     paymentId?: SortOrder
     email?: SortOrder
-    password?: SortOrder
-    phone?: SortOrder
+    api_auth_key?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
   }
@@ -13215,11 +11937,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type ReferListNullableRelationFilter = {
-    is?: ReferListWhereInput | null
-    isNot?: ReferListWhereInput | null
-  }
-
   export type UserListRelationFilter = {
     every?: UserWhereInput
     some?: UserWhereInput
@@ -13227,43 +11944,6 @@ export namespace Prisma {
   }
 
   export type UserOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ReferCountOrderByAggregateInput = {
-    id?: SortOrder
-    own_refer_code?: SortOrder
-    refer_contain?: SortOrder
-    referListId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type ReferMaxOrderByAggregateInput = {
-    id?: SortOrder
-    own_refer_code?: SortOrder
-    refer_contain?: SortOrder
-    referListId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type ReferMinOrderByAggregateInput = {
-    id?: SortOrder
-    own_refer_code?: SortOrder
-    refer_contain?: SortOrder
-    referListId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type ReferListRelationFilter = {
-    every?: ReferWhereInput
-    some?: ReferWhereInput
-    none?: ReferWhereInput
-  }
-
-  export type ReferOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13475,91 +12155,6 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type SubCategoryRelationFilter = {
-    is?: SubCategoryWhereInput
-    isNot?: SubCategoryWhereInput
-  }
-
-  export type CategoryCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    description?: SortOrder
-    subCategoryId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type CategoryMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    description?: SortOrder
-    subCategoryId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type CategoryMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    description?: SortOrder
-    subCategoryId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type CategoryListRelationFilter = {
-    every?: CategoryWhereInput
-    some?: CategoryWhereInput
-    none?: CategoryWhereInput
-  }
-
-  export type CategoryOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SubCategoryCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    number_of_qus?: SortOrder
-    questionId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type SubCategoryAvgOrderByAggregateInput = {
-    number_of_qus?: SortOrder
-  }
-
-  export type SubCategoryMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    number_of_qus?: SortOrder
-    questionId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type SubCategoryMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    number_of_qus?: SortOrder
-    questionId?: SortOrder
-    createAt?: SortOrder
-    updateAt?: SortOrder
-  }
-
-  export type SubCategorySumOrderByAggregateInput = {
-    number_of_qus?: SortOrder
-  }
-
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
   export type SubCategoryListRelationFilter = {
     every?: SubCategoryWhereInput
     some?: SubCategoryWhereInput
@@ -13570,11 +12165,93 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type CategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    createAt?: SortOrder
+    updateAt?: SortOrder
+  }
+
+  export type CategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    createAt?: SortOrder
+    updateAt?: SortOrder
+  }
+
+  export type CategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    createAt?: SortOrder
+    updateAt?: SortOrder
+  }
+
+  export type CategoryRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
+  }
+
+  export type QuestionListRelationFilter = {
+    every?: QuestionWhereInput
+    some?: QuestionWhereInput
+    none?: QuestionWhereInput
+  }
+
+  export type QuestionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SubCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createAt?: SortOrder
+    updateAt?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type SubCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createAt?: SortOrder
+    updateAt?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type SubCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createAt?: SortOrder
+    updateAt?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type SubCategoryRelationFilter = {
+    is?: SubCategoryWhereInput
+    isNot?: SubCategoryWhereInput
+  }
+
+  export type AnsQusNullableRelationFilter = {
+    is?: AnsQusWhereInput | null
+    isNot?: AnsQusWhereInput | null
+  }
+
   export type QuestionCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     option?: SortOrder
     ans?: SortOrder
+    subCategoryId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
   }
@@ -13583,6 +12260,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     ans?: SortOrder
+    subCategoryId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
   }
@@ -13591,6 +12269,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     ans?: SortOrder
+    subCategoryId?: SortOrder
     createAt?: SortOrder
     updateAt?: SortOrder
   }
@@ -13607,16 +12286,16 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput
   }
 
-  export type ReferCreateNestedOneWithoutUserInput = {
-    create?: XOR<ReferCreateWithoutUserInput, ReferUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ReferCreateOrConnectWithoutUserInput
-    connect?: ReferWhereUniqueInput
-  }
-
   export type ResultCreateNestedOneWithoutUserInput = {
     create?: XOR<ResultCreateWithoutUserInput, ResultUncheckedCreateWithoutUserInput>
     connectOrCreate?: ResultCreateOrConnectWithoutUserInput
     connect?: ResultWhereUniqueInput
+  }
+
+  export type ReferListCreateNestedOneWithoutUserInput = {
+    create?: XOR<ReferListCreateWithoutUserInput, ReferListUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ReferListCreateOrConnectWithoutUserInput
+    connect?: ReferListWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -13647,16 +12326,6 @@ export namespace Prisma {
     update?: XOR<XOR<PaymentUpdateToOneWithWhereWithoutUserInput, PaymentUpdateWithoutUserInput>, PaymentUncheckedUpdateWithoutUserInput>
   }
 
-  export type ReferUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ReferCreateWithoutUserInput, ReferUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ReferCreateOrConnectWithoutUserInput
-    upsert?: ReferUpsertWithoutUserInput
-    disconnect?: ReferWhereInput | boolean
-    delete?: ReferWhereInput | boolean
-    connect?: ReferWhereUniqueInput
-    update?: XOR<XOR<ReferUpdateToOneWithWhereWithoutUserInput, ReferUpdateWithoutUserInput>, ReferUncheckedUpdateWithoutUserInput>
-  }
-
   export type ResultUpdateOneRequiredWithoutUserNestedInput = {
     create?: XOR<ResultCreateWithoutUserInput, ResultUncheckedCreateWithoutUserInput>
     connectOrCreate?: ResultCreateOrConnectWithoutUserInput
@@ -13665,104 +12334,56 @@ export namespace Prisma {
     update?: XOR<XOR<ResultUpdateToOneWithWhereWithoutUserInput, ResultUpdateWithoutUserInput>, ResultUncheckedUpdateWithoutUserInput>
   }
 
-  export type ReferListCreateNestedOneWithoutReferInput = {
-    create?: XOR<ReferListCreateWithoutReferInput, ReferListUncheckedCreateWithoutReferInput>
-    connectOrCreate?: ReferListCreateOrConnectWithoutReferInput
-    connect?: ReferListWhereUniqueInput
-  }
-
-  export type UserCreateNestedManyWithoutReferInput = {
-    create?: XOR<UserCreateWithoutReferInput, UserUncheckedCreateWithoutReferInput> | UserCreateWithoutReferInput[] | UserUncheckedCreateWithoutReferInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutReferInput | UserCreateOrConnectWithoutReferInput[]
-    createMany?: UserCreateManyReferInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type UserUncheckedCreateNestedManyWithoutReferInput = {
-    create?: XOR<UserCreateWithoutReferInput, UserUncheckedCreateWithoutReferInput> | UserCreateWithoutReferInput[] | UserUncheckedCreateWithoutReferInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutReferInput | UserCreateOrConnectWithoutReferInput[]
-    createMany?: UserCreateManyReferInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type ReferListUpdateOneWithoutReferNestedInput = {
-    create?: XOR<ReferListCreateWithoutReferInput, ReferListUncheckedCreateWithoutReferInput>
-    connectOrCreate?: ReferListCreateOrConnectWithoutReferInput
-    upsert?: ReferListUpsertWithoutReferInput
+  export type ReferListUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ReferListCreateWithoutUserInput, ReferListUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ReferListCreateOrConnectWithoutUserInput
+    upsert?: ReferListUpsertWithoutUserInput
     disconnect?: ReferListWhereInput | boolean
     delete?: ReferListWhereInput | boolean
     connect?: ReferListWhereUniqueInput
-    update?: XOR<XOR<ReferListUpdateToOneWithWhereWithoutReferInput, ReferListUpdateWithoutReferInput>, ReferListUncheckedUpdateWithoutReferInput>
+    update?: XOR<XOR<ReferListUpdateToOneWithWhereWithoutUserInput, ReferListUpdateWithoutUserInput>, ReferListUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserUpdateManyWithoutReferNestedInput = {
-    create?: XOR<UserCreateWithoutReferInput, UserUncheckedCreateWithoutReferInput> | UserCreateWithoutReferInput[] | UserUncheckedCreateWithoutReferInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutReferInput | UserCreateOrConnectWithoutReferInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutReferInput | UserUpsertWithWhereUniqueWithoutReferInput[]
-    createMany?: UserCreateManyReferInputEnvelope
+  export type UserCreateNestedManyWithoutReferListInput = {
+    create?: XOR<UserCreateWithoutReferListInput, UserUncheckedCreateWithoutReferListInput> | UserCreateWithoutReferListInput[] | UserUncheckedCreateWithoutReferListInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutReferListInput | UserCreateOrConnectWithoutReferListInput[]
+    createMany?: UserCreateManyReferListInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutReferListInput = {
+    create?: XOR<UserCreateWithoutReferListInput, UserUncheckedCreateWithoutReferListInput> | UserCreateWithoutReferListInput[] | UserUncheckedCreateWithoutReferListInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutReferListInput | UserCreateOrConnectWithoutReferListInput[]
+    createMany?: UserCreateManyReferListInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUpdateManyWithoutReferListNestedInput = {
+    create?: XOR<UserCreateWithoutReferListInput, UserUncheckedCreateWithoutReferListInput> | UserCreateWithoutReferListInput[] | UserUncheckedCreateWithoutReferListInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutReferListInput | UserCreateOrConnectWithoutReferListInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutReferListInput | UserUpsertWithWhereUniqueWithoutReferListInput[]
+    createMany?: UserCreateManyReferListInputEnvelope
     set?: UserWhereUniqueInput | UserWhereUniqueInput[]
     disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
     delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutReferInput | UserUpdateWithWhereUniqueWithoutReferInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutReferInput | UserUpdateManyWithWhereWithoutReferInput[]
+    update?: UserUpdateWithWhereUniqueWithoutReferListInput | UserUpdateWithWhereUniqueWithoutReferListInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutReferListInput | UserUpdateManyWithWhereWithoutReferListInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutReferNestedInput = {
-    create?: XOR<UserCreateWithoutReferInput, UserUncheckedCreateWithoutReferInput> | UserCreateWithoutReferInput[] | UserUncheckedCreateWithoutReferInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutReferInput | UserCreateOrConnectWithoutReferInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutReferInput | UserUpsertWithWhereUniqueWithoutReferInput[]
-    createMany?: UserCreateManyReferInputEnvelope
+  export type UserUncheckedUpdateManyWithoutReferListNestedInput = {
+    create?: XOR<UserCreateWithoutReferListInput, UserUncheckedCreateWithoutReferListInput> | UserCreateWithoutReferListInput[] | UserUncheckedCreateWithoutReferListInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutReferListInput | UserCreateOrConnectWithoutReferListInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutReferListInput | UserUpsertWithWhereUniqueWithoutReferListInput[]
+    createMany?: UserCreateManyReferListInputEnvelope
     set?: UserWhereUniqueInput | UserWhereUniqueInput[]
     disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
     delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutReferInput | UserUpdateWithWhereUniqueWithoutReferInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutReferInput | UserUpdateManyWithWhereWithoutReferInput[]
+    update?: UserUpdateWithWhereUniqueWithoutReferListInput | UserUpdateWithWhereUniqueWithoutReferListInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutReferListInput | UserUpdateManyWithWhereWithoutReferListInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type ReferCreateNestedManyWithoutRefer_listInput = {
-    create?: XOR<ReferCreateWithoutRefer_listInput, ReferUncheckedCreateWithoutRefer_listInput> | ReferCreateWithoutRefer_listInput[] | ReferUncheckedCreateWithoutRefer_listInput[]
-    connectOrCreate?: ReferCreateOrConnectWithoutRefer_listInput | ReferCreateOrConnectWithoutRefer_listInput[]
-    createMany?: ReferCreateManyRefer_listInputEnvelope
-    connect?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-  }
-
-  export type ReferUncheckedCreateNestedManyWithoutRefer_listInput = {
-    create?: XOR<ReferCreateWithoutRefer_listInput, ReferUncheckedCreateWithoutRefer_listInput> | ReferCreateWithoutRefer_listInput[] | ReferUncheckedCreateWithoutRefer_listInput[]
-    connectOrCreate?: ReferCreateOrConnectWithoutRefer_listInput | ReferCreateOrConnectWithoutRefer_listInput[]
-    createMany?: ReferCreateManyRefer_listInputEnvelope
-    connect?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-  }
-
-  export type ReferUpdateManyWithoutRefer_listNestedInput = {
-    create?: XOR<ReferCreateWithoutRefer_listInput, ReferUncheckedCreateWithoutRefer_listInput> | ReferCreateWithoutRefer_listInput[] | ReferUncheckedCreateWithoutRefer_listInput[]
-    connectOrCreate?: ReferCreateOrConnectWithoutRefer_listInput | ReferCreateOrConnectWithoutRefer_listInput[]
-    upsert?: ReferUpsertWithWhereUniqueWithoutRefer_listInput | ReferUpsertWithWhereUniqueWithoutRefer_listInput[]
-    createMany?: ReferCreateManyRefer_listInputEnvelope
-    set?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    disconnect?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    delete?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    connect?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    update?: ReferUpdateWithWhereUniqueWithoutRefer_listInput | ReferUpdateWithWhereUniqueWithoutRefer_listInput[]
-    updateMany?: ReferUpdateManyWithWhereWithoutRefer_listInput | ReferUpdateManyWithWhereWithoutRefer_listInput[]
-    deleteMany?: ReferScalarWhereInput | ReferScalarWhereInput[]
-  }
-
-  export type ReferUncheckedUpdateManyWithoutRefer_listNestedInput = {
-    create?: XOR<ReferCreateWithoutRefer_listInput, ReferUncheckedCreateWithoutRefer_listInput> | ReferCreateWithoutRefer_listInput[] | ReferUncheckedCreateWithoutRefer_listInput[]
-    connectOrCreate?: ReferCreateOrConnectWithoutRefer_listInput | ReferCreateOrConnectWithoutRefer_listInput[]
-    upsert?: ReferUpsertWithWhereUniqueWithoutRefer_listInput | ReferUpsertWithWhereUniqueWithoutRefer_listInput[]
-    createMany?: ReferCreateManyRefer_listInputEnvelope
-    set?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    disconnect?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    delete?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    connect?: ReferWhereUniqueInput | ReferWhereUniqueInput[]
-    update?: ReferUpdateWithWhereUniqueWithoutRefer_listInput | ReferUpdateWithWhereUniqueWithoutRefer_listInput[]
-    updateMany?: ReferUpdateManyWithWhereWithoutRefer_listInput | ReferUpdateManyWithWhereWithoutRefer_listInput[]
-    deleteMany?: ReferScalarWhereInput | ReferScalarWhereInput[]
   }
 
   export type UserCreateNestedManyWithoutResultInput = {
@@ -13979,106 +12600,124 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
-  export type SubCategoryCreateNestedOneWithoutCategoryInput = {
-    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput>
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput
-    connect?: SubCategoryWhereUniqueInput
+  export type SubCategoryCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
+    createMany?: SubCategoryCreateManyCategoryInputEnvelope
+    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
   }
 
-  export type SubCategoryUpdateOneRequiredWithoutCategoryNestedInput = {
-    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput>
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput
-    upsert?: SubCategoryUpsertWithoutCategoryInput
-    connect?: SubCategoryWhereUniqueInput
-    update?: XOR<XOR<SubCategoryUpdateToOneWithWhereWithoutCategoryInput, SubCategoryUpdateWithoutCategoryInput>, SubCategoryUncheckedUpdateWithoutCategoryInput>
+  export type SubCategoryUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
+    createMany?: SubCategoryCreateManyCategoryInputEnvelope
+    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
   }
 
-  export type QuestionCreateNestedOneWithoutSubCategoryInput = {
-    create?: XOR<QuestionCreateWithoutSubCategoryInput, QuestionUncheckedCreateWithoutSubCategoryInput>
-    connectOrCreate?: QuestionCreateOrConnectWithoutSubCategoryInput
-    connect?: QuestionWhereUniqueInput
+  export type SubCategoryUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
+    upsert?: SubCategoryUpsertWithWhereUniqueWithoutCategoryInput | SubCategoryUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: SubCategoryCreateManyCategoryInputEnvelope
+    set?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    disconnect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    delete?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    update?: SubCategoryUpdateWithWhereUniqueWithoutCategoryInput | SubCategoryUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: SubCategoryUpdateManyWithWhereWithoutCategoryInput | SubCategoryUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
   }
 
-  export type CategoryCreateNestedManyWithoutSub_cateogryInput = {
-    create?: XOR<CategoryCreateWithoutSub_cateogryInput, CategoryUncheckedCreateWithoutSub_cateogryInput> | CategoryCreateWithoutSub_cateogryInput[] | CategoryUncheckedCreateWithoutSub_cateogryInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutSub_cateogryInput | CategoryCreateOrConnectWithoutSub_cateogryInput[]
-    createMany?: CategoryCreateManySub_cateogryInputEnvelope
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  export type SubCategoryUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput> | SubCategoryCreateWithoutCategoryInput[] | SubCategoryUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SubCategoryCreateOrConnectWithoutCategoryInput | SubCategoryCreateOrConnectWithoutCategoryInput[]
+    upsert?: SubCategoryUpsertWithWhereUniqueWithoutCategoryInput | SubCategoryUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: SubCategoryCreateManyCategoryInputEnvelope
+    set?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    disconnect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    delete?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+    update?: SubCategoryUpdateWithWhereUniqueWithoutCategoryInput | SubCategoryUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: SubCategoryUpdateManyWithWhereWithoutCategoryInput | SubCategoryUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
   }
 
-  export type CategoryUncheckedCreateNestedManyWithoutSub_cateogryInput = {
-    create?: XOR<CategoryCreateWithoutSub_cateogryInput, CategoryUncheckedCreateWithoutSub_cateogryInput> | CategoryCreateWithoutSub_cateogryInput[] | CategoryUncheckedCreateWithoutSub_cateogryInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutSub_cateogryInput | CategoryCreateOrConnectWithoutSub_cateogryInput[]
-    createMany?: CategoryCreateManySub_cateogryInputEnvelope
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  export type CategoryCreateNestedOneWithoutSubCategoryInput = {
+    create?: XOR<CategoryCreateWithoutSubCategoryInput, CategoryUncheckedCreateWithoutSubCategoryInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutSubCategoryInput
+    connect?: CategoryWhereUniqueInput
   }
 
-  export type QuestionUpdateOneRequiredWithoutSubCategoryNestedInput = {
-    create?: XOR<QuestionCreateWithoutSubCategoryInput, QuestionUncheckedCreateWithoutSubCategoryInput>
-    connectOrCreate?: QuestionCreateOrConnectWithoutSubCategoryInput
-    upsert?: QuestionUpsertWithoutSubCategoryInput
-    connect?: QuestionWhereUniqueInput
-    update?: XOR<XOR<QuestionUpdateToOneWithWhereWithoutSubCategoryInput, QuestionUpdateWithoutSubCategoryInput>, QuestionUncheckedUpdateWithoutSubCategoryInput>
+  export type QuestionCreateNestedManyWithoutSub_categoryInput = {
+    create?: XOR<QuestionCreateWithoutSub_categoryInput, QuestionUncheckedCreateWithoutSub_categoryInput> | QuestionCreateWithoutSub_categoryInput[] | QuestionUncheckedCreateWithoutSub_categoryInput[]
+    connectOrCreate?: QuestionCreateOrConnectWithoutSub_categoryInput | QuestionCreateOrConnectWithoutSub_categoryInput[]
+    createMany?: QuestionCreateManySub_categoryInputEnvelope
+    connect?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
   }
 
-  export type CategoryUpdateManyWithoutSub_cateogryNestedInput = {
-    create?: XOR<CategoryCreateWithoutSub_cateogryInput, CategoryUncheckedCreateWithoutSub_cateogryInput> | CategoryCreateWithoutSub_cateogryInput[] | CategoryUncheckedCreateWithoutSub_cateogryInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutSub_cateogryInput | CategoryCreateOrConnectWithoutSub_cateogryInput[]
-    upsert?: CategoryUpsertWithWhereUniqueWithoutSub_cateogryInput | CategoryUpsertWithWhereUniqueWithoutSub_cateogryInput[]
-    createMany?: CategoryCreateManySub_cateogryInputEnvelope
-    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    update?: CategoryUpdateWithWhereUniqueWithoutSub_cateogryInput | CategoryUpdateWithWhereUniqueWithoutSub_cateogryInput[]
-    updateMany?: CategoryUpdateManyWithWhereWithoutSub_cateogryInput | CategoryUpdateManyWithWhereWithoutSub_cateogryInput[]
-    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  export type QuestionUncheckedCreateNestedManyWithoutSub_categoryInput = {
+    create?: XOR<QuestionCreateWithoutSub_categoryInput, QuestionUncheckedCreateWithoutSub_categoryInput> | QuestionCreateWithoutSub_categoryInput[] | QuestionUncheckedCreateWithoutSub_categoryInput[]
+    connectOrCreate?: QuestionCreateOrConnectWithoutSub_categoryInput | QuestionCreateOrConnectWithoutSub_categoryInput[]
+    createMany?: QuestionCreateManySub_categoryInputEnvelope
+    connect?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
   }
 
-  export type CategoryUncheckedUpdateManyWithoutSub_cateogryNestedInput = {
-    create?: XOR<CategoryCreateWithoutSub_cateogryInput, CategoryUncheckedCreateWithoutSub_cateogryInput> | CategoryCreateWithoutSub_cateogryInput[] | CategoryUncheckedCreateWithoutSub_cateogryInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutSub_cateogryInput | CategoryCreateOrConnectWithoutSub_cateogryInput[]
-    upsert?: CategoryUpsertWithWhereUniqueWithoutSub_cateogryInput | CategoryUpsertWithWhereUniqueWithoutSub_cateogryInput[]
-    createMany?: CategoryCreateManySub_cateogryInputEnvelope
-    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    update?: CategoryUpdateWithWhereUniqueWithoutSub_cateogryInput | CategoryUpdateWithWhereUniqueWithoutSub_cateogryInput[]
-    updateMany?: CategoryUpdateManyWithWhereWithoutSub_cateogryInput | CategoryUpdateManyWithWhereWithoutSub_cateogryInput[]
-    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  export type CategoryUpdateOneRequiredWithoutSubCategoryNestedInput = {
+    create?: XOR<CategoryCreateWithoutSubCategoryInput, CategoryUncheckedCreateWithoutSubCategoryInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutSubCategoryInput
+    upsert?: CategoryUpsertWithoutSubCategoryInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutSubCategoryInput, CategoryUpdateWithoutSubCategoryInput>, CategoryUncheckedUpdateWithoutSubCategoryInput>
+  }
+
+  export type QuestionUpdateManyWithoutSub_categoryNestedInput = {
+    create?: XOR<QuestionCreateWithoutSub_categoryInput, QuestionUncheckedCreateWithoutSub_categoryInput> | QuestionCreateWithoutSub_categoryInput[] | QuestionUncheckedCreateWithoutSub_categoryInput[]
+    connectOrCreate?: QuestionCreateOrConnectWithoutSub_categoryInput | QuestionCreateOrConnectWithoutSub_categoryInput[]
+    upsert?: QuestionUpsertWithWhereUniqueWithoutSub_categoryInput | QuestionUpsertWithWhereUniqueWithoutSub_categoryInput[]
+    createMany?: QuestionCreateManySub_categoryInputEnvelope
+    set?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    disconnect?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    delete?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    connect?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    update?: QuestionUpdateWithWhereUniqueWithoutSub_categoryInput | QuestionUpdateWithWhereUniqueWithoutSub_categoryInput[]
+    updateMany?: QuestionUpdateManyWithWhereWithoutSub_categoryInput | QuestionUpdateManyWithWhereWithoutSub_categoryInput[]
+    deleteMany?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
+  }
+
+  export type QuestionUncheckedUpdateManyWithoutSub_categoryNestedInput = {
+    create?: XOR<QuestionCreateWithoutSub_categoryInput, QuestionUncheckedCreateWithoutSub_categoryInput> | QuestionCreateWithoutSub_categoryInput[] | QuestionUncheckedCreateWithoutSub_categoryInput[]
+    connectOrCreate?: QuestionCreateOrConnectWithoutSub_categoryInput | QuestionCreateOrConnectWithoutSub_categoryInput[]
+    upsert?: QuestionUpsertWithWhereUniqueWithoutSub_categoryInput | QuestionUpsertWithWhereUniqueWithoutSub_categoryInput[]
+    createMany?: QuestionCreateManySub_categoryInputEnvelope
+    set?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    disconnect?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    delete?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    connect?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
+    update?: QuestionUpdateWithWhereUniqueWithoutSub_categoryInput | QuestionUpdateWithWhereUniqueWithoutSub_categoryInput[]
+    updateMany?: QuestionUpdateManyWithWhereWithoutSub_categoryInput | QuestionUpdateManyWithWhereWithoutSub_categoryInput[]
+    deleteMany?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
   }
 
   export type QuestionCreateoptionInput = {
     set: string[]
   }
 
-  export type SubCategoryCreateNestedManyWithoutQuestionInput = {
-    create?: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput> | SubCategoryCreateWithoutQuestionInput[] | SubCategoryUncheckedCreateWithoutQuestionInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutQuestionInput | SubCategoryCreateOrConnectWithoutQuestionInput[]
-    createMany?: SubCategoryCreateManyQuestionInputEnvelope
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
+  export type SubCategoryCreateNestedOneWithoutQuestionInput = {
+    create?: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput>
+    connectOrCreate?: SubCategoryCreateOrConnectWithoutQuestionInput
+    connect?: SubCategoryWhereUniqueInput
   }
 
-  export type AnsQusCreateNestedManyWithoutQusInput = {
-    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput> | AnsQusCreateWithoutQusInput[] | AnsQusUncheckedCreateWithoutQusInput[]
-    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput | AnsQusCreateOrConnectWithoutQusInput[]
-    createMany?: AnsQusCreateManyQusInputEnvelope
-    connect?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
+  export type AnsQusCreateNestedOneWithoutQusInput = {
+    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput>
+    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput
+    connect?: AnsQusWhereUniqueInput
   }
 
-  export type SubCategoryUncheckedCreateNestedManyWithoutQuestionInput = {
-    create?: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput> | SubCategoryCreateWithoutQuestionInput[] | SubCategoryUncheckedCreateWithoutQuestionInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutQuestionInput | SubCategoryCreateOrConnectWithoutQuestionInput[]
-    createMany?: SubCategoryCreateManyQuestionInputEnvelope
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-  }
-
-  export type AnsQusUncheckedCreateNestedManyWithoutQusInput = {
-    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput> | AnsQusCreateWithoutQusInput[] | AnsQusUncheckedCreateWithoutQusInput[]
-    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput | AnsQusCreateOrConnectWithoutQusInput[]
-    createMany?: AnsQusCreateManyQusInputEnvelope
-    connect?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
+  export type AnsQusUncheckedCreateNestedOneWithoutQusInput = {
+    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput>
+    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput
+    connect?: AnsQusWhereUniqueInput
   }
 
   export type QuestionUpdateoptionInput = {
@@ -14086,60 +12725,32 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type SubCategoryUpdateManyWithoutQuestionNestedInput = {
-    create?: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput> | SubCategoryCreateWithoutQuestionInput[] | SubCategoryUncheckedCreateWithoutQuestionInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutQuestionInput | SubCategoryCreateOrConnectWithoutQuestionInput[]
-    upsert?: SubCategoryUpsertWithWhereUniqueWithoutQuestionInput | SubCategoryUpsertWithWhereUniqueWithoutQuestionInput[]
-    createMany?: SubCategoryCreateManyQuestionInputEnvelope
-    set?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    disconnect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    delete?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    update?: SubCategoryUpdateWithWhereUniqueWithoutQuestionInput | SubCategoryUpdateWithWhereUniqueWithoutQuestionInput[]
-    updateMany?: SubCategoryUpdateManyWithWhereWithoutQuestionInput | SubCategoryUpdateManyWithWhereWithoutQuestionInput[]
-    deleteMany?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
+  export type SubCategoryUpdateOneRequiredWithoutQuestionNestedInput = {
+    create?: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput>
+    connectOrCreate?: SubCategoryCreateOrConnectWithoutQuestionInput
+    upsert?: SubCategoryUpsertWithoutQuestionInput
+    connect?: SubCategoryWhereUniqueInput
+    update?: XOR<XOR<SubCategoryUpdateToOneWithWhereWithoutQuestionInput, SubCategoryUpdateWithoutQuestionInput>, SubCategoryUncheckedUpdateWithoutQuestionInput>
   }
 
-  export type AnsQusUpdateManyWithoutQusNestedInput = {
-    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput> | AnsQusCreateWithoutQusInput[] | AnsQusUncheckedCreateWithoutQusInput[]
-    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput | AnsQusCreateOrConnectWithoutQusInput[]
-    upsert?: AnsQusUpsertWithWhereUniqueWithoutQusInput | AnsQusUpsertWithWhereUniqueWithoutQusInput[]
-    createMany?: AnsQusCreateManyQusInputEnvelope
-    set?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    disconnect?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    delete?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    connect?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    update?: AnsQusUpdateWithWhereUniqueWithoutQusInput | AnsQusUpdateWithWhereUniqueWithoutQusInput[]
-    updateMany?: AnsQusUpdateManyWithWhereWithoutQusInput | AnsQusUpdateManyWithWhereWithoutQusInput[]
-    deleteMany?: AnsQusScalarWhereInput | AnsQusScalarWhereInput[]
+  export type AnsQusUpdateOneWithoutQusNestedInput = {
+    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput>
+    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput
+    upsert?: AnsQusUpsertWithoutQusInput
+    disconnect?: AnsQusWhereInput | boolean
+    delete?: AnsQusWhereInput | boolean
+    connect?: AnsQusWhereUniqueInput
+    update?: XOR<XOR<AnsQusUpdateToOneWithWhereWithoutQusInput, AnsQusUpdateWithoutQusInput>, AnsQusUncheckedUpdateWithoutQusInput>
   }
 
-  export type SubCategoryUncheckedUpdateManyWithoutQuestionNestedInput = {
-    create?: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput> | SubCategoryCreateWithoutQuestionInput[] | SubCategoryUncheckedCreateWithoutQuestionInput[]
-    connectOrCreate?: SubCategoryCreateOrConnectWithoutQuestionInput | SubCategoryCreateOrConnectWithoutQuestionInput[]
-    upsert?: SubCategoryUpsertWithWhereUniqueWithoutQuestionInput | SubCategoryUpsertWithWhereUniqueWithoutQuestionInput[]
-    createMany?: SubCategoryCreateManyQuestionInputEnvelope
-    set?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    disconnect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    delete?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    connect?: SubCategoryWhereUniqueInput | SubCategoryWhereUniqueInput[]
-    update?: SubCategoryUpdateWithWhereUniqueWithoutQuestionInput | SubCategoryUpdateWithWhereUniqueWithoutQuestionInput[]
-    updateMany?: SubCategoryUpdateManyWithWhereWithoutQuestionInput | SubCategoryUpdateManyWithWhereWithoutQuestionInput[]
-    deleteMany?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
-  }
-
-  export type AnsQusUncheckedUpdateManyWithoutQusNestedInput = {
-    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput> | AnsQusCreateWithoutQusInput[] | AnsQusUncheckedCreateWithoutQusInput[]
-    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput | AnsQusCreateOrConnectWithoutQusInput[]
-    upsert?: AnsQusUpsertWithWhereUniqueWithoutQusInput | AnsQusUpsertWithWhereUniqueWithoutQusInput[]
-    createMany?: AnsQusCreateManyQusInputEnvelope
-    set?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    disconnect?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    delete?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    connect?: AnsQusWhereUniqueInput | AnsQusWhereUniqueInput[]
-    update?: AnsQusUpdateWithWhereUniqueWithoutQusInput | AnsQusUpdateWithWhereUniqueWithoutQusInput[]
-    updateMany?: AnsQusUpdateManyWithWhereWithoutQusInput | AnsQusUpdateManyWithWhereWithoutQusInput[]
-    deleteMany?: AnsQusScalarWhereInput | AnsQusScalarWhereInput[]
+  export type AnsQusUncheckedUpdateOneWithoutQusNestedInput = {
+    create?: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput>
+    connectOrCreate?: AnsQusCreateOrConnectWithoutQusInput
+    upsert?: AnsQusUpsertWithoutQusInput
+    disconnect?: AnsQusWhereInput | boolean
+    delete?: AnsQusWhereInput | boolean
+    connect?: AnsQusWhereUniqueInput
+    update?: XOR<XOR<AnsQusUpdateToOneWithWhereWithoutQusInput, AnsQusUpdateWithoutQusInput>, AnsQusUncheckedUpdateWithoutQusInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -14345,29 +12956,6 @@ export namespace Prisma {
     create: XOR<PaymentCreateWithoutUserInput, PaymentUncheckedCreateWithoutUserInput>
   }
 
-  export type ReferCreateWithoutUserInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    refer_list?: ReferListCreateNestedOneWithoutReferInput
-  }
-
-  export type ReferUncheckedCreateWithoutUserInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    referListId: string
-    createAt?: Date | string
-    updateAt?: Date | string
-  }
-
-  export type ReferCreateOrConnectWithoutUserInput = {
-    where: ReferWhereUniqueInput
-    create: XOR<ReferCreateWithoutUserInput, ReferUncheckedCreateWithoutUserInput>
-  }
-
   export type ResultCreateWithoutUserInput = {
     id?: string
     solve: number
@@ -14389,6 +12977,25 @@ export namespace Prisma {
   export type ResultCreateOrConnectWithoutUserInput = {
     where: ResultWhereUniqueInput
     create: XOR<ResultCreateWithoutUserInput, ResultUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReferListCreateWithoutUserInput = {
+    id?: string
+    refer: string
+    createAt?: Date | string
+    updateAt?: Date | string
+  }
+
+  export type ReferListUncheckedCreateWithoutUserInput = {
+    id?: string
+    refer: string
+    createAt?: Date | string
+    updateAt?: Date | string
+  }
+
+  export type ReferListCreateOrConnectWithoutUserInput = {
+    where: ReferListWhereUniqueInput
+    create: XOR<ReferListCreateWithoutUserInput, ReferListUncheckedCreateWithoutUserInput>
   }
 
   export type EarningUpsertWithoutUserInput = {
@@ -14443,35 +13050,6 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ReferUpsertWithoutUserInput = {
-    update: XOR<ReferUpdateWithoutUserInput, ReferUncheckedUpdateWithoutUserInput>
-    create: XOR<ReferCreateWithoutUserInput, ReferUncheckedCreateWithoutUserInput>
-    where?: ReferWhereInput
-  }
-
-  export type ReferUpdateToOneWithWhereWithoutUserInput = {
-    where?: ReferWhereInput
-    data: XOR<ReferUpdateWithoutUserInput, ReferUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ReferUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    refer_list?: ReferListUpdateOneWithoutReferNestedInput
-  }
-
-  export type ReferUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    referListId?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type ResultUpsertWithoutUserInput = {
     update: XOR<ResultUpdateWithoutUserInput, ResultUncheckedUpdateWithoutUserInput>
     create: XOR<ResultCreateWithoutUserInput, ResultUncheckedCreateWithoutUserInput>
@@ -14501,33 +13079,40 @@ export namespace Prisma {
     ans_qus_list?: AnsQusUncheckedUpdateManyWithoutResultNestedInput
   }
 
-  export type ReferListCreateWithoutReferInput = {
-    id?: string
-    refer: string
-    createAt?: Date | string
-    updateAt?: Date | string
+  export type ReferListUpsertWithoutUserInput = {
+    update: XOR<ReferListUpdateWithoutUserInput, ReferListUncheckedUpdateWithoutUserInput>
+    create: XOR<ReferListCreateWithoutUserInput, ReferListUncheckedCreateWithoutUserInput>
+    where?: ReferListWhereInput
   }
 
-  export type ReferListUncheckedCreateWithoutReferInput = {
-    id?: string
-    refer: string
-    createAt?: Date | string
-    updateAt?: Date | string
+  export type ReferListUpdateToOneWithWhereWithoutUserInput = {
+    where?: ReferListWhereInput
+    data: XOR<ReferListUpdateWithoutUserInput, ReferListUncheckedUpdateWithoutUserInput>
   }
 
-  export type ReferListCreateOrConnectWithoutReferInput = {
-    where: ReferListWhereUniqueInput
-    create: XOR<ReferListCreateWithoutReferInput, ReferListUncheckedCreateWithoutReferInput>
+  export type ReferListUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    refer?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCreateWithoutReferInput = {
+  export type ReferListUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    refer?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateWithoutReferListInput = {
     id?: string
     name?: string | null
     picture?: string | null
     select_category?: string | null
+    own_refer_code?: string | null
+    refer_contain?: string | null
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
     earning: EarningCreateNestedOneWithoutUserInput
@@ -14535,70 +13120,46 @@ export namespace Prisma {
     result: ResultCreateNestedOneWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutReferInput = {
+  export type UserUncheckedCreateWithoutReferListInput = {
     id?: string
     name?: string | null
     picture?: string | null
     select_category?: string | null
+    own_refer_code?: string | null
+    refer_contain?: string | null
     earningId: string
     resultId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
 
-  export type UserCreateOrConnectWithoutReferInput = {
+  export type UserCreateOrConnectWithoutReferListInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutReferInput, UserUncheckedCreateWithoutReferInput>
+    create: XOR<UserCreateWithoutReferListInput, UserUncheckedCreateWithoutReferListInput>
   }
 
-  export type UserCreateManyReferInputEnvelope = {
-    data: UserCreateManyReferInput | UserCreateManyReferInput[]
+  export type UserCreateManyReferListInputEnvelope = {
+    data: UserCreateManyReferListInput | UserCreateManyReferListInput[]
     skipDuplicates?: boolean
   }
 
-  export type ReferListUpsertWithoutReferInput = {
-    update: XOR<ReferListUpdateWithoutReferInput, ReferListUncheckedUpdateWithoutReferInput>
-    create: XOR<ReferListCreateWithoutReferInput, ReferListUncheckedCreateWithoutReferInput>
-    where?: ReferListWhereInput
-  }
-
-  export type ReferListUpdateToOneWithWhereWithoutReferInput = {
-    where?: ReferListWhereInput
-    data: XOR<ReferListUpdateWithoutReferInput, ReferListUncheckedUpdateWithoutReferInput>
-  }
-
-  export type ReferListUpdateWithoutReferInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    refer?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ReferListUncheckedUpdateWithoutReferInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    refer?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutReferInput = {
+  export type UserUpsertWithWhereUniqueWithoutReferListInput = {
     where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutReferInput, UserUncheckedUpdateWithoutReferInput>
-    create: XOR<UserCreateWithoutReferInput, UserUncheckedCreateWithoutReferInput>
+    update: XOR<UserUpdateWithoutReferListInput, UserUncheckedUpdateWithoutReferListInput>
+    create: XOR<UserCreateWithoutReferListInput, UserUncheckedCreateWithoutReferListInput>
   }
 
-  export type UserUpdateWithWhereUniqueWithoutReferInput = {
+  export type UserUpdateWithWhereUniqueWithoutReferListInput = {
     where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutReferInput, UserUncheckedUpdateWithoutReferInput>
+    data: XOR<UserUpdateWithoutReferListInput, UserUncheckedUpdateWithoutReferListInput>
   }
 
-  export type UserUpdateManyWithWhereWithoutReferInput = {
+  export type UserUpdateManyWithWhereWithoutReferListInput = {
     where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutReferInput>
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutReferListInput>
   }
 
   export type UserScalarWhereInput = {
@@ -14609,71 +13170,16 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     picture?: StringNullableFilter<"User"> | string | null
     select_category?: StringNullableFilter<"User"> | string | null
-    referId?: StringFilter<"User"> | string
+    own_refer_code?: StringNullableFilter<"User"> | string | null
+    refer_contain?: StringNullableFilter<"User"> | string | null
+    referListId?: StringNullableFilter<"User"> | string | null
     earningId?: StringFilter<"User"> | string
     resultId?: StringFilter<"User"> | string
     paymentId?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    phone?: StringFilter<"User"> | string
+    api_auth_key?: StringFilter<"User"> | string
     createAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
-  }
-
-  export type ReferCreateWithoutRefer_listInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    User?: UserCreateNestedManyWithoutReferInput
-  }
-
-  export type ReferUncheckedCreateWithoutRefer_listInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    User?: UserUncheckedCreateNestedManyWithoutReferInput
-  }
-
-  export type ReferCreateOrConnectWithoutRefer_listInput = {
-    where: ReferWhereUniqueInput
-    create: XOR<ReferCreateWithoutRefer_listInput, ReferUncheckedCreateWithoutRefer_listInput>
-  }
-
-  export type ReferCreateManyRefer_listInputEnvelope = {
-    data: ReferCreateManyRefer_listInput | ReferCreateManyRefer_listInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ReferUpsertWithWhereUniqueWithoutRefer_listInput = {
-    where: ReferWhereUniqueInput
-    update: XOR<ReferUpdateWithoutRefer_listInput, ReferUncheckedUpdateWithoutRefer_listInput>
-    create: XOR<ReferCreateWithoutRefer_listInput, ReferUncheckedCreateWithoutRefer_listInput>
-  }
-
-  export type ReferUpdateWithWhereUniqueWithoutRefer_listInput = {
-    where: ReferWhereUniqueInput
-    data: XOR<ReferUpdateWithoutRefer_listInput, ReferUncheckedUpdateWithoutRefer_listInput>
-  }
-
-  export type ReferUpdateManyWithWhereWithoutRefer_listInput = {
-    where: ReferScalarWhereInput
-    data: XOR<ReferUpdateManyMutationInput, ReferUncheckedUpdateManyWithoutRefer_listInput>
-  }
-
-  export type ReferScalarWhereInput = {
-    AND?: ReferScalarWhereInput | ReferScalarWhereInput[]
-    OR?: ReferScalarWhereInput[]
-    NOT?: ReferScalarWhereInput | ReferScalarWhereInput[]
-    id?: StringFilter<"Refer"> | string
-    own_refer_code?: StringFilter<"Refer"> | string
-    refer_contain?: StringFilter<"Refer"> | string
-    referListId?: StringFilter<"Refer"> | string
-    createAt?: DateTimeFilter<"Refer"> | Date | string
-    updateAt?: DateTimeFilter<"Refer"> | Date | string
   }
 
   export type UserCreateWithoutResultInput = {
@@ -14681,14 +13187,15 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
+    own_refer_code?: string | null
+    refer_contain?: string | null
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
     earning: EarningCreateNestedOneWithoutUserInput
     payment: PaymentCreateNestedOneWithoutUserInput
-    refer?: ReferCreateNestedOneWithoutUserInput
+    ReferList?: ReferListCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutResultInput = {
@@ -14696,12 +13203,13 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     earningId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -14790,7 +13298,7 @@ export namespace Prisma {
     ans: string
     createAt?: Date | string
     updateAt?: Date | string
-    SubCategory?: SubCategoryCreateNestedManyWithoutQuestionInput
+    sub_category: SubCategoryCreateNestedOneWithoutQuestionInput
   }
 
   export type QuestionUncheckedCreateWithoutAnsQusInput = {
@@ -14798,9 +13306,9 @@ export namespace Prisma {
     name: string
     option?: QuestionCreateoptionInput | string[]
     ans: string
+    subCategoryId: string
     createAt?: Date | string
     updateAt?: Date | string
-    SubCategory?: SubCategoryUncheckedCreateNestedManyWithoutQuestionInput
   }
 
   export type QuestionCreateOrConnectWithoutAnsQusInput = {
@@ -14849,7 +13357,7 @@ export namespace Prisma {
     ans?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    SubCategory?: SubCategoryUpdateManyWithoutQuestionNestedInput
+    sub_category?: SubCategoryUpdateOneRequiredWithoutQuestionNestedInput
   }
 
   export type QuestionUncheckedUpdateWithoutAnsQusInput = {
@@ -14857,9 +13365,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     option?: QuestionUpdateoptionInput | string[]
     ans?: StringFieldUpdateOperationsInput | string
+    subCategoryId?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    SubCategory?: SubCategoryUncheckedUpdateManyWithoutQuestionNestedInput
   }
 
   export type ResultUpsertWithoutAns_qus_listInput = {
@@ -14896,14 +13404,15 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
+    own_refer_code?: string | null
+    refer_contain?: string | null
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
     earning: EarningCreateNestedOneWithoutUserInput
-    refer?: ReferCreateNestedOneWithoutUserInput
     result: ResultCreateNestedOneWithoutUserInput
+    ReferList?: ReferListCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPaymentInput = {
@@ -14911,12 +13420,13 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     earningId: string
     resultId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -14952,14 +13462,15 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
+    own_refer_code?: string | null
+    refer_contain?: string | null
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
     payment: PaymentCreateNestedOneWithoutUserInput
-    refer?: ReferCreateNestedOneWithoutUserInput
     result: ResultCreateNestedOneWithoutUserInput
+    ReferList?: ReferListCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEarningInput = {
@@ -14967,12 +13478,13 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     resultId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -15006,19 +13518,17 @@ export namespace Prisma {
   export type SubCategoryCreateWithoutCategoryInput = {
     id?: string
     name: string
-    number_of_qus: number
     createAt?: Date | string
     updateAt?: Date | string
-    question: QuestionCreateNestedOneWithoutSubCategoryInput
+    Question?: QuestionCreateNestedManyWithoutSub_categoryInput
   }
 
   export type SubCategoryUncheckedCreateWithoutCategoryInput = {
     id?: string
     name: string
-    number_of_qus: number
-    questionId: string
     createAt?: Date | string
     updateAt?: Date | string
+    Question?: QuestionUncheckedCreateNestedManyWithoutSub_categoryInput
   }
 
   export type SubCategoryCreateOrConnectWithoutCategoryInput = {
@@ -15026,171 +13536,164 @@ export namespace Prisma {
     create: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput>
   }
 
-  export type SubCategoryUpsertWithoutCategoryInput = {
-    update: XOR<SubCategoryUpdateWithoutCategoryInput, SubCategoryUncheckedUpdateWithoutCategoryInput>
-    create: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput>
-    where?: SubCategoryWhereInput
-  }
-
-  export type SubCategoryUpdateToOneWithWhereWithoutCategoryInput = {
-    where?: SubCategoryWhereInput
-    data: XOR<SubCategoryUpdateWithoutCategoryInput, SubCategoryUncheckedUpdateWithoutCategoryInput>
-  }
-
-  export type SubCategoryUpdateWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    question?: QuestionUpdateOneRequiredWithoutSubCategoryNestedInput
-  }
-
-  export type SubCategoryUncheckedUpdateWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
-    questionId?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type QuestionCreateWithoutSubCategoryInput = {
-    id?: string
-    name: string
-    option?: QuestionCreateoptionInput | string[]
-    ans: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    AnsQus?: AnsQusCreateNestedManyWithoutQusInput
-  }
-
-  export type QuestionUncheckedCreateWithoutSubCategoryInput = {
-    id?: string
-    name: string
-    option?: QuestionCreateoptionInput | string[]
-    ans: string
-    createAt?: Date | string
-    updateAt?: Date | string
-    AnsQus?: AnsQusUncheckedCreateNestedManyWithoutQusInput
-  }
-
-  export type QuestionCreateOrConnectWithoutSubCategoryInput = {
-    where: QuestionWhereUniqueInput
-    create: XOR<QuestionCreateWithoutSubCategoryInput, QuestionUncheckedCreateWithoutSubCategoryInput>
-  }
-
-  export type CategoryCreateWithoutSub_cateogryInput = {
-    id?: string
-    name: string
-    description: string
-    createAt?: Date | string
-    updateAt?: Date | string
-  }
-
-  export type CategoryUncheckedCreateWithoutSub_cateogryInput = {
-    id?: string
-    name: string
-    description: string
-    createAt?: Date | string
-    updateAt?: Date | string
-  }
-
-  export type CategoryCreateOrConnectWithoutSub_cateogryInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutSub_cateogryInput, CategoryUncheckedCreateWithoutSub_cateogryInput>
-  }
-
-  export type CategoryCreateManySub_cateogryInputEnvelope = {
-    data: CategoryCreateManySub_cateogryInput | CategoryCreateManySub_cateogryInput[]
+  export type SubCategoryCreateManyCategoryInputEnvelope = {
+    data: SubCategoryCreateManyCategoryInput | SubCategoryCreateManyCategoryInput[]
     skipDuplicates?: boolean
   }
 
-  export type QuestionUpsertWithoutSubCategoryInput = {
-    update: XOR<QuestionUpdateWithoutSubCategoryInput, QuestionUncheckedUpdateWithoutSubCategoryInput>
-    create: XOR<QuestionCreateWithoutSubCategoryInput, QuestionUncheckedCreateWithoutSubCategoryInput>
-    where?: QuestionWhereInput
+  export type SubCategoryUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: SubCategoryWhereUniqueInput
+    update: XOR<SubCategoryUpdateWithoutCategoryInput, SubCategoryUncheckedUpdateWithoutCategoryInput>
+    create: XOR<SubCategoryCreateWithoutCategoryInput, SubCategoryUncheckedCreateWithoutCategoryInput>
   }
 
-  export type QuestionUpdateToOneWithWhereWithoutSubCategoryInput = {
-    where?: QuestionWhereInput
-    data: XOR<QuestionUpdateWithoutSubCategoryInput, QuestionUncheckedUpdateWithoutSubCategoryInput>
+  export type SubCategoryUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: SubCategoryWhereUniqueInput
+    data: XOR<SubCategoryUpdateWithoutCategoryInput, SubCategoryUncheckedUpdateWithoutCategoryInput>
   }
 
-  export type QuestionUpdateWithoutSubCategoryInput = {
+  export type SubCategoryUpdateManyWithWhereWithoutCategoryInput = {
+    where: SubCategoryScalarWhereInput
+    data: XOR<SubCategoryUpdateManyMutationInput, SubCategoryUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type SubCategoryScalarWhereInput = {
+    AND?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
+    OR?: SubCategoryScalarWhereInput[]
+    NOT?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
+    id?: StringFilter<"SubCategory"> | string
+    name?: StringFilter<"SubCategory"> | string
+    createAt?: DateTimeFilter<"SubCategory"> | Date | string
+    updateAt?: DateTimeFilter<"SubCategory"> | Date | string
+    categoryId?: StringFilter<"SubCategory"> | string
+  }
+
+  export type CategoryCreateWithoutSubCategoryInput = {
+    id?: string
+    name: string
+    description: string
+    createAt?: Date | string
+    updateAt?: Date | string
+  }
+
+  export type CategoryUncheckedCreateWithoutSubCategoryInput = {
+    id?: string
+    name: string
+    description: string
+    createAt?: Date | string
+    updateAt?: Date | string
+  }
+
+  export type CategoryCreateOrConnectWithoutSubCategoryInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutSubCategoryInput, CategoryUncheckedCreateWithoutSubCategoryInput>
+  }
+
+  export type QuestionCreateWithoutSub_categoryInput = {
+    id?: string
+    name: string
+    option?: QuestionCreateoptionInput | string[]
+    ans: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    AnsQus?: AnsQusCreateNestedOneWithoutQusInput
+  }
+
+  export type QuestionUncheckedCreateWithoutSub_categoryInput = {
+    id?: string
+    name: string
+    option?: QuestionCreateoptionInput | string[]
+    ans: string
+    createAt?: Date | string
+    updateAt?: Date | string
+    AnsQus?: AnsQusUncheckedCreateNestedOneWithoutQusInput
+  }
+
+  export type QuestionCreateOrConnectWithoutSub_categoryInput = {
+    where: QuestionWhereUniqueInput
+    create: XOR<QuestionCreateWithoutSub_categoryInput, QuestionUncheckedCreateWithoutSub_categoryInput>
+  }
+
+  export type QuestionCreateManySub_categoryInputEnvelope = {
+    data: QuestionCreateManySub_categoryInput | QuestionCreateManySub_categoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CategoryUpsertWithoutSubCategoryInput = {
+    update: XOR<CategoryUpdateWithoutSubCategoryInput, CategoryUncheckedUpdateWithoutSubCategoryInput>
+    create: XOR<CategoryCreateWithoutSubCategoryInput, CategoryUncheckedCreateWithoutSubCategoryInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutSubCategoryInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutSubCategoryInput, CategoryUncheckedUpdateWithoutSubCategoryInput>
+  }
+
+  export type CategoryUpdateWithoutSubCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    option?: QuestionUpdateoptionInput | string[]
-    ans?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    AnsQus?: AnsQusUpdateManyWithoutQusNestedInput
   }
 
-  export type QuestionUncheckedUpdateWithoutSubCategoryInput = {
+  export type CategoryUncheckedUpdateWithoutSubCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    option?: QuestionUpdateoptionInput | string[]
-    ans?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    AnsQus?: AnsQusUncheckedUpdateManyWithoutQusNestedInput
   }
 
-  export type CategoryUpsertWithWhereUniqueWithoutSub_cateogryInput = {
-    where: CategoryWhereUniqueInput
-    update: XOR<CategoryUpdateWithoutSub_cateogryInput, CategoryUncheckedUpdateWithoutSub_cateogryInput>
-    create: XOR<CategoryCreateWithoutSub_cateogryInput, CategoryUncheckedCreateWithoutSub_cateogryInput>
+  export type QuestionUpsertWithWhereUniqueWithoutSub_categoryInput = {
+    where: QuestionWhereUniqueInput
+    update: XOR<QuestionUpdateWithoutSub_categoryInput, QuestionUncheckedUpdateWithoutSub_categoryInput>
+    create: XOR<QuestionCreateWithoutSub_categoryInput, QuestionUncheckedCreateWithoutSub_categoryInput>
   }
 
-  export type CategoryUpdateWithWhereUniqueWithoutSub_cateogryInput = {
-    where: CategoryWhereUniqueInput
-    data: XOR<CategoryUpdateWithoutSub_cateogryInput, CategoryUncheckedUpdateWithoutSub_cateogryInput>
+  export type QuestionUpdateWithWhereUniqueWithoutSub_categoryInput = {
+    where: QuestionWhereUniqueInput
+    data: XOR<QuestionUpdateWithoutSub_categoryInput, QuestionUncheckedUpdateWithoutSub_categoryInput>
   }
 
-  export type CategoryUpdateManyWithWhereWithoutSub_cateogryInput = {
-    where: CategoryScalarWhereInput
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutSub_cateogryInput>
+  export type QuestionUpdateManyWithWhereWithoutSub_categoryInput = {
+    where: QuestionScalarWhereInput
+    data: XOR<QuestionUpdateManyMutationInput, QuestionUncheckedUpdateManyWithoutSub_categoryInput>
   }
 
-  export type CategoryScalarWhereInput = {
-    AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-    OR?: CategoryScalarWhereInput[]
-    NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-    id?: StringFilter<"Category"> | string
-    name?: StringFilter<"Category"> | string
-    description?: StringFilter<"Category"> | string
-    subCategoryId?: StringFilter<"Category"> | string
-    createAt?: DateTimeFilter<"Category"> | Date | string
-    updateAt?: DateTimeFilter<"Category"> | Date | string
+  export type QuestionScalarWhereInput = {
+    AND?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
+    OR?: QuestionScalarWhereInput[]
+    NOT?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
+    id?: StringFilter<"Question"> | string
+    name?: StringFilter<"Question"> | string
+    option?: StringNullableListFilter<"Question">
+    ans?: StringFilter<"Question"> | string
+    subCategoryId?: StringFilter<"Question"> | string
+    createAt?: DateTimeFilter<"Question"> | Date | string
+    updateAt?: DateTimeFilter<"Question"> | Date | string
   }
 
   export type SubCategoryCreateWithoutQuestionInput = {
     id?: string
     name: string
-    number_of_qus: number
     createAt?: Date | string
     updateAt?: Date | string
-    Category?: CategoryCreateNestedManyWithoutSub_cateogryInput
+    category: CategoryCreateNestedOneWithoutSubCategoryInput
   }
 
   export type SubCategoryUncheckedCreateWithoutQuestionInput = {
     id?: string
     name: string
-    number_of_qus: number
     createAt?: Date | string
     updateAt?: Date | string
-    Category?: CategoryUncheckedCreateNestedManyWithoutSub_cateogryInput
+    categoryId: string
   }
 
   export type SubCategoryCreateOrConnectWithoutQuestionInput = {
     where: SubCategoryWhereUniqueInput
     create: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput>
-  }
-
-  export type SubCategoryCreateManyQuestionInputEnvelope = {
-    data: SubCategoryCreateManyQuestionInput | SubCategoryCreateManyQuestionInput[]
-    skipDuplicates?: boolean
   }
 
   export type AnsQusCreateWithoutQusInput = {
@@ -15212,78 +13715,83 @@ export namespace Prisma {
     create: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput>
   }
 
-  export type AnsQusCreateManyQusInputEnvelope = {
-    data: AnsQusCreateManyQusInput | AnsQusCreateManyQusInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type SubCategoryUpsertWithWhereUniqueWithoutQuestionInput = {
-    where: SubCategoryWhereUniqueInput
+  export type SubCategoryUpsertWithoutQuestionInput = {
     update: XOR<SubCategoryUpdateWithoutQuestionInput, SubCategoryUncheckedUpdateWithoutQuestionInput>
     create: XOR<SubCategoryCreateWithoutQuestionInput, SubCategoryUncheckedCreateWithoutQuestionInput>
+    where?: SubCategoryWhereInput
   }
 
-  export type SubCategoryUpdateWithWhereUniqueWithoutQuestionInput = {
-    where: SubCategoryWhereUniqueInput
+  export type SubCategoryUpdateToOneWithWhereWithoutQuestionInput = {
+    where?: SubCategoryWhereInput
     data: XOR<SubCategoryUpdateWithoutQuestionInput, SubCategoryUncheckedUpdateWithoutQuestionInput>
   }
 
-  export type SubCategoryUpdateManyWithWhereWithoutQuestionInput = {
-    where: SubCategoryScalarWhereInput
-    data: XOR<SubCategoryUpdateManyMutationInput, SubCategoryUncheckedUpdateManyWithoutQuestionInput>
+  export type SubCategoryUpdateWithoutQuestionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: CategoryUpdateOneRequiredWithoutSubCategoryNestedInput
   }
 
-  export type SubCategoryScalarWhereInput = {
-    AND?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
-    OR?: SubCategoryScalarWhereInput[]
-    NOT?: SubCategoryScalarWhereInput | SubCategoryScalarWhereInput[]
-    id?: StringFilter<"SubCategory"> | string
-    name?: StringFilter<"SubCategory"> | string
-    number_of_qus?: IntFilter<"SubCategory"> | number
-    questionId?: StringFilter<"SubCategory"> | string
-    createAt?: DateTimeFilter<"SubCategory"> | Date | string
-    updateAt?: DateTimeFilter<"SubCategory"> | Date | string
+  export type SubCategoryUncheckedUpdateWithoutQuestionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categoryId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AnsQusUpsertWithWhereUniqueWithoutQusInput = {
-    where: AnsQusWhereUniqueInput
+  export type AnsQusUpsertWithoutQusInput = {
     update: XOR<AnsQusUpdateWithoutQusInput, AnsQusUncheckedUpdateWithoutQusInput>
     create: XOR<AnsQusCreateWithoutQusInput, AnsQusUncheckedCreateWithoutQusInput>
+    where?: AnsQusWhereInput
   }
 
-  export type AnsQusUpdateWithWhereUniqueWithoutQusInput = {
-    where: AnsQusWhereUniqueInput
+  export type AnsQusUpdateToOneWithWhereWithoutQusInput = {
+    where?: AnsQusWhereInput
     data: XOR<AnsQusUpdateWithoutQusInput, AnsQusUncheckedUpdateWithoutQusInput>
   }
 
-  export type AnsQusUpdateManyWithWhereWithoutQusInput = {
-    where: AnsQusScalarWhereInput
-    data: XOR<AnsQusUpdateManyMutationInput, AnsQusUncheckedUpdateManyWithoutQusInput>
+  export type AnsQusUpdateWithoutQusInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Result?: ResultUpdateOneWithoutAns_qus_listNestedInput
   }
 
-  export type UserCreateManyReferInput = {
+  export type AnsQusUncheckedUpdateWithoutQusInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    resultId?: NullableStringFieldUpdateOperationsInput | string | null
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateManyReferListInput = {
     id?: string
     name?: string | null
     picture?: string | null
     select_category?: string | null
+    own_refer_code?: string | null
+    refer_contain?: string | null
     earningId: string
     resultId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
 
-  export type UserUpdateWithoutReferInput = {
+  export type UserUpdateWithoutReferListInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     earning?: EarningUpdateOneRequiredWithoutUserNestedInput
@@ -15291,66 +13799,34 @@ export namespace Prisma {
     result?: ResultUpdateOneRequiredWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutReferInput = {
+  export type UserUncheckedUpdateWithoutReferListInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     resultId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserUncheckedUpdateManyWithoutReferInput = {
+  export type UserUncheckedUpdateManyWithoutReferListInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     resultId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ReferCreateManyRefer_listInput = {
-    id?: string
-    own_refer_code: string
-    refer_contain: string
-    createAt?: Date | string
-    updateAt?: Date | string
-  }
-
-  export type ReferUpdateWithoutRefer_listInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    User?: UserUpdateManyWithoutReferNestedInput
-  }
-
-  export type ReferUncheckedUpdateWithoutRefer_listInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    User?: UserUncheckedUpdateManyWithoutReferNestedInput
-  }
-
-  export type ReferUncheckedUpdateManyWithoutRefer_listInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    own_refer_code?: StringFieldUpdateOperationsInput | string
-    refer_contain?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15360,12 +13836,13 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     earningId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -15382,14 +13859,15 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     earning?: EarningUpdateOneRequiredWithoutUserNestedInput
     payment?: PaymentUpdateOneRequiredWithoutUserNestedInput
-    refer?: ReferUpdateOneWithoutUserNestedInput
+    ReferList?: ReferListUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutResultInput = {
@@ -15397,12 +13875,13 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15412,12 +13891,13 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15448,12 +13928,13 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     earningId: string
     resultId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -15463,14 +13944,15 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     earning?: EarningUpdateOneRequiredWithoutUserNestedInput
-    refer?: ReferUpdateOneWithoutUserNestedInput
     result?: ResultUpdateOneRequiredWithoutUserNestedInput
+    ReferList?: ReferListUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPaymentInput = {
@@ -15478,12 +13960,13 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     resultId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15493,12 +13976,13 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     earningId?: StringFieldUpdateOperationsInput | string
     resultId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15508,12 +13992,13 @@ export namespace Prisma {
     name?: string | null
     picture?: string | null
     select_category?: string | null
-    referId: string
+    own_refer_code?: string | null
+    refer_contain?: string | null
+    referListId?: string | null
     resultId: string
     paymentId: string
     email: string
-    password: string
-    phone: string
+    api_auth_key: string
     createAt?: Date | string
     updateAt?: Date | string
   }
@@ -15523,14 +14008,15 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     payment?: PaymentUpdateOneRequiredWithoutUserNestedInput
-    refer?: ReferUpdateOneWithoutUserNestedInput
     result?: ResultUpdateOneRequiredWithoutUserNestedInput
+    ReferList?: ReferListUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEarningInput = {
@@ -15538,12 +14024,13 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     resultId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15553,106 +14040,81 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     select_category?: NullableStringFieldUpdateOperationsInput | string | null
-    referId?: StringFieldUpdateOperationsInput | string
+    own_refer_code?: NullableStringFieldUpdateOperationsInput | string | null
+    refer_contain?: NullableStringFieldUpdateOperationsInput | string | null
+    referListId?: NullableStringFieldUpdateOperationsInput | string | null
     resultId?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    api_auth_key?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CategoryCreateManySub_cateogryInput = {
+  export type SubCategoryCreateManyCategoryInput = {
     id?: string
     name: string
-    description: string
     createAt?: Date | string
     updateAt?: Date | string
   }
 
-  export type CategoryUpdateWithoutSub_cateogryInput = {
+  export type SubCategoryUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Question?: QuestionUpdateManyWithoutSub_categoryNestedInput
+  }
+
+  export type SubCategoryUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Question?: QuestionUncheckedUpdateManyWithoutSub_categoryNestedInput
+  }
+
+  export type SubCategoryUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CategoryUncheckedUpdateWithoutSub_cateogryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CategoryUncheckedUpdateManyWithoutSub_cateogryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SubCategoryCreateManyQuestionInput = {
+  export type QuestionCreateManySub_categoryInput = {
     id?: string
     name: string
-    number_of_qus: number
+    option?: QuestionCreateoptionInput | string[]
+    ans: string
     createAt?: Date | string
     updateAt?: Date | string
   }
 
-  export type AnsQusCreateManyQusInput = {
-    id?: string
-    resultId?: string | null
-    createAt?: Date | string
-    updateAt?: Date | string
-  }
-
-  export type SubCategoryUpdateWithoutQuestionInput = {
+  export type QuestionUpdateWithoutSub_categoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
+    option?: QuestionUpdateoptionInput | string[]
+    ans?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Category?: CategoryUpdateManyWithoutSub_cateogryNestedInput
+    AnsQus?: AnsQusUpdateOneWithoutQusNestedInput
   }
 
-  export type SubCategoryUncheckedUpdateWithoutQuestionInput = {
+  export type QuestionUncheckedUpdateWithoutSub_categoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
+    option?: QuestionUpdateoptionInput | string[]
+    ans?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Category?: CategoryUncheckedUpdateManyWithoutSub_cateogryNestedInput
+    AnsQus?: AnsQusUncheckedUpdateOneWithoutQusNestedInput
   }
 
-  export type SubCategoryUncheckedUpdateManyWithoutQuestionInput = {
+  export type QuestionUncheckedUpdateManyWithoutSub_categoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    number_of_qus?: IntFieldUpdateOperationsInput | number
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AnsQusUpdateWithoutQusInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Result?: ResultUpdateOneWithoutAns_qus_listNestedInput
-  }
-
-  export type AnsQusUncheckedUpdateWithoutQusInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    resultId?: NullableStringFieldUpdateOperationsInput | string | null
-    createAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AnsQusUncheckedUpdateManyWithoutQusInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    resultId?: NullableStringFieldUpdateOperationsInput | string | null
+    option?: QuestionUpdateoptionInput | string[]
+    ans?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15662,10 +14124,6 @@ export namespace Prisma {
   /**
    * Aliases for legacy arg types
    */
-    /**
-     * @deprecated Use ReferCountOutputTypeDefaultArgs instead
-     */
-    export type ReferCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ReferCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ReferListCountOutputTypeDefaultArgs instead
      */
@@ -15683,21 +14141,17 @@ export namespace Prisma {
      */
     export type EarningCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = EarningCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use CategoryCountOutputTypeDefaultArgs instead
+     */
+    export type CategoryCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = CategoryCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use SubCategoryCountOutputTypeDefaultArgs instead
      */
     export type SubCategoryCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = SubCategoryCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use QuestionCountOutputTypeDefaultArgs instead
-     */
-    export type QuestionCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = QuestionCountOutputTypeDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ReferDefaultArgs instead
-     */
-    export type ReferArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ReferDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ReferListDefaultArgs instead
      */
