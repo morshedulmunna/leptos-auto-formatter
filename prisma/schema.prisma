@@ -115,7 +115,7 @@ model Category {
 
 model SubCategory {
   id   String @id @default(cuid())
-  name String
+  name String @unique
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
@@ -130,7 +130,7 @@ model SubCategory {
 
 model Question {
   id     String   @id @default(cuid())
-  name   String
+  name   String   @unique
   option String[]
   ans    String
 

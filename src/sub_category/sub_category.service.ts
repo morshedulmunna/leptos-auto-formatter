@@ -22,6 +22,9 @@ export class SubCategoryService {
           name,
           categoryId,
         },
+        include: {
+          category: true,
+        },
       });
 
       return category;
@@ -82,9 +85,12 @@ export class SubCategoryService {
 
   async remove(id: string) {
     try {
-      return await this.prisma.subCategory.delete({
+      await this.prisma.subCategory.delete({
         where: { id },
       });
+      return {
+        message: ' Sub Category Delete successfully!',
+      };
     } catch (error) {
       return {
         message: 'Something Internal Issue!',

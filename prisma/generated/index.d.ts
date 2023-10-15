@@ -11078,16 +11078,16 @@ export namespace Prisma {
 
   export type SubCategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name?: string
     AND?: SubCategoryWhereInput | SubCategoryWhereInput[]
     OR?: SubCategoryWhereInput[]
     NOT?: SubCategoryWhereInput | SubCategoryWhereInput[]
-    name?: StringFilter<"SubCategory"> | string
     createAt?: DateTimeFilter<"SubCategory"> | Date | string
     updateAt?: DateTimeFilter<"SubCategory"> | Date | string
     categoryId?: StringFilter<"SubCategory"> | string
     category?: XOR<CategoryRelationFilter, CategoryWhereInput>
     Question?: QuestionListRelationFilter
-  }, "id">
+  }, "id" | "name">
 
   export type SubCategoryOrderByWithAggregationInput = {
     id?: SortOrder
@@ -11140,10 +11140,10 @@ export namespace Prisma {
 
   export type QuestionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    name?: string
     AND?: QuestionWhereInput | QuestionWhereInput[]
     OR?: QuestionWhereInput[]
     NOT?: QuestionWhereInput | QuestionWhereInput[]
-    name?: StringFilter<"Question"> | string
     option?: StringNullableListFilter<"Question">
     ans?: StringFilter<"Question"> | string
     subCategoryId?: StringFilter<"Question"> | string
@@ -11151,7 +11151,7 @@ export namespace Prisma {
     updateAt?: DateTimeFilter<"Question"> | Date | string
     sub_category?: XOR<SubCategoryRelationFilter, SubCategoryWhereInput>
     AnsQus?: XOR<AnsQusNullableRelationFilter, AnsQusWhereInput> | null
-  }, "id">
+  }, "id" | "name">
 
   export type QuestionOrderByWithAggregationInput = {
     id?: SortOrder

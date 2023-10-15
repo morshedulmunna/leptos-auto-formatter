@@ -2,29 +2,38 @@ import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { PrismaClient } from 'prisma/generated';
 
 @Injectable()
-export class CategoryService {
+export class QuestionService {
   constructor(private readonly prisma: PrismaClient) {}
 
-  async CategoryCreate(createCategoryDto: any) {
-    const { name, description } = createCategoryDto;
+  async create(createQuestionDto: any) {
+    const { name, subCategoryId, option, ans } = createQuestionDto;
 
-    const alreadyAdded = await this.prisma.category.findFirst({
+    const alreadyAdded = await this.prisma.question.findFirst({
       where: { name },
     });
 
     if (alreadyAdded?.name === name) {
-      throw new NotAcceptableException('Category Already Added.');
+      throw new NotAcceptableException('Qus already added change tittle.');
     }
 
     try {
-      const category = await this.prisma.category.create({
+      const question = await this.prisma.question.create({
         data: {
           name,
-          description,
+          subCategoryId,
+          option,
+          ans,
+        },
+        include: {
+          sub_category: {
+            select: {
+              name: true,
+            },
+          },
         },
       });
 
-      return category;
+      return question;
     } catch (error) {
       return {
         message: 'Something Internal Issue!',
@@ -35,9 +44,9 @@ export class CategoryService {
 
   async findAll() {
     try {
-      return await this.prisma.category.findMany({
+      return await this.prisma.question.findMany({
         include: {
-          SubCategory: true,
+          sub_category: true,
         },
       });
     } catch (error) {
@@ -50,10 +59,10 @@ export class CategoryService {
 
   async findOne(id: string) {
     try {
-      return await this.prisma.category.findUnique({
+      return await this.prisma.question.findUnique({
         where: { id },
         include: {
-          SubCategory: true,
+          sub_category: true,
         },
       });
     } catch (error) {
@@ -64,12 +73,12 @@ export class CategoryService {
     }
   }
 
-  async update(id: string, updateCategoryDto: any) {
+  async update(id: string, updateQuestionDto: any) {
     try {
-      return await this.prisma.category.update({
+      return await this.prisma.question.update({
         where: { id },
         data: {
-          ...updateCategoryDto,
+          ...updateQuestionDto,
         },
       });
     } catch (error) {
@@ -82,12 +91,11 @@ export class CategoryService {
 
   async remove(id: string) {
     try {
-      await this.prisma.category.delete({
+      await this.prisma.question.delete({
         where: { id },
       });
-
       return {
-        message: 'Category Delete successfully!',
+        message: 'Question Delete successfully!',
       };
     } catch (error) {
       return {
