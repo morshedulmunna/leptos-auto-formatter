@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "target": "ES2020",
+    "outDir": "out",
+    "lib": [
+      "ES2020",
+      "dom"
+    ],
     "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"]
+  },
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ]
 }
