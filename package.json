@@ -2,7 +2,7 @@
   "name": "leptos-auto-formatter",
   "displayName": "Leptos Auto Formatter",
   "description": "Format Leptos components using leptosfmt on save",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publisher": "morshedulmunna",
   "engines": {
     "vscode": "^1.74.0"

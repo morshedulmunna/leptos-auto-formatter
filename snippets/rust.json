@@ -34,6 +34,8 @@
     "Leptos Component": {
         "prefix": "lc",
         "body": [
+            "use leptos::prelude::*;",
+            "",
             "#[component]",
             "pub fn ${1:ComponentName}() -> impl IntoView {",
             "    view! {",
@@ -46,6 +48,8 @@
     "Leptos Component with Props": {
         "prefix": "lcp",
         "body": [
+            "use leptos::prelude::*;",
+            "",
             "#[component]",
             "pub fn ${1:ComponentName}(props: ${2:Props}) -> impl IntoView {",
             "    view! {",
@@ -54,6 +58,50 @@
             "}"
         ],
         "description": "Create a Leptos component with props"
+    },
+    "Leptos Component with Children": {
+        "prefix": "lcc",
+        "body": [
+            "use leptos::prelude::*;",
+            "",
+            "#[component]",
+            "pub fn ${1:ComponentName}(",
+            "    children: Children,",
+            "    #[prop(optional)] class: Option<&'static str>,",
+            ") -> impl IntoView {",
+            "    view! {",
+            "        <div class=class>",
+            "            {children()}",
+            "        </div>",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos component with children and optional class"
+    },
+    "Leptos Component with Props and Children": {
+        "prefix": "lcpc",
+        "body": [
+            "use leptos::prelude::*;",
+            "",
+            "#[derive(Props, PartialEq, Clone)]",
+            "pub struct ${1:ComponentName}Props {",
+            "    pub children: Children,",
+            "    #[prop(optional)]",
+            "    pub class: Option<&'static str>,",
+            "    #[prop(optional)]",
+            "    pub ${2:custom_prop}: Option<${3:String}>,",
+            "}",
+            "",
+            "#[component]",
+            "pub fn ${1:ComponentName}(props: ${1:ComponentName}Props) -> impl IntoView {",
+            "    view! {",
+            "        <div class=props.class>",
+            "            {props.children()}",
+            "        </div>",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos component with props and children"
     },
     "Leptos View": {
         "prefix": "lv",
