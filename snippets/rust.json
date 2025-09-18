@@ -1,4 +1,36 @@
 {
+    "Leptos Imports": {
+        "prefix": "limports",
+        "body": [
+            "use leptos::prelude::*;"
+        ],
+        "description": "Common Leptos imports"
+    },
+    "Leptos Router Imports": {
+        "prefix": "lrouter",
+        "body": [
+            "use leptos::prelude::*;",
+            "use leptos_router::*;"
+        ],
+        "description": "Leptos with router imports"
+    },
+    "Leptos Server Imports": {
+        "prefix": "lserver_imports",
+        "body": [
+            "use leptos::prelude::*;",
+            "use leptos::server_fn::*;"
+        ],
+        "description": "Leptos with server function imports"
+    },
+    "Leptos Full Imports": {
+        "prefix": "lfull",
+        "body": [
+            "use leptos::prelude::*;",
+            "use leptos_router::*;",
+            "use leptos::server_fn::*;"
+        ],
+        "description": "Complete Leptos imports with router and server"
+    },
     "Leptos Component": {
         "prefix": "lc",
         "body": [
@@ -301,5 +333,328 @@
             "let ${3:pending} = ${1:action}.pending();"
         ],
         "description": "Create a Leptos action with pending state"
+    },
+    "Leptos Memo": {
+        "prefix": "lmemo",
+        "body": [
+            "let ${1:memo} = create_memo(move |_| {",
+            "    ${2:// Memo logic}",
+            "});"
+        ],
+        "description": "Create a Leptos memo"
+    },
+    "Leptos Derived Signal": {
+        "prefix": "lderived",
+        "body": [
+            "let ${1:derived} = create_derived(move |_| {",
+            "    ${2:// Derived logic}",
+            "});"
+        ],
+        "description": "Create a Leptos derived signal"
+    },
+    "Leptos Mount": {
+        "prefix": "lmount",
+        "body": [
+            "leptos::mount_to_body(|| view! { <${1:App/> });"
+        ],
+        "description": "Mount Leptos app to body"
+    },
+    "Leptos Hydrate": {
+        "prefix": "lhydrate",
+        "body": [
+            "leptos::hydrate_to_body(|| view! { <${1:App/> });"
+        ],
+        "description": "Hydrate Leptos app to body"
+    },
+    "Leptos SSR": {
+        "prefix": "lssr",
+        "body": [
+            "leptos::ssr::render_to_string(|| view! { <${1:App/> })"
+        ],
+        "description": "Server-side render Leptos app"
+    },
+    "Leptos Cargo Dependencies": {
+        "prefix": "ldeps",
+        "body": [
+            "[dependencies]",
+            "leptos = { version = \"${1:0.6}\", features = [\"csr\"] }",
+            "leptos_router = \"${1:0.6}\"",
+            "leptos_meta = \"${1:0.6}\"",
+            "console_error_panic_hook = \"0.1.7\"",
+            "console_log = \"1.0.0\"",
+            "wasm-bindgen = \"0.2\""
+        ],
+        "description": "Common Leptos Cargo dependencies"
+    },
+    "Leptos Cargo Dependencies SSR": {
+        "prefix": "ldeps_ssr",
+        "body": [
+            "[dependencies]",
+            "leptos = { version = \"${1:0.6}\", features = [\"ssr\"] }",
+            "leptos_router = \"${1:0.6}\"",
+            "leptos_meta = \"${1:0.6}\"",
+            "leptos_axum = \"${1:0.6}\"",
+            "axum = \"0.7\"",
+            "tokio = { version = \"1.0\", features = [\"full\"] }",
+            "tracing = \"0.1\"",
+            "tracing-subscriber = \"0.3\""
+        ],
+        "description": "Leptos Cargo dependencies for SSR"
+    },
+    "Leptos Meta Title": {
+        "prefix": "ltitle",
+        "body": [
+            "Title { \"${1:Page Title}\" }"
+        ],
+        "description": "Set page title with Leptos Meta"
+    },
+    "Leptos Meta Description": {
+        "prefix": "ldesc",
+        "body": [
+            "Meta {",
+            "    name=\"description\",",
+            "    content=\"${1:Page description}\"",
+            "}"
+        ],
+        "description": "Set page description with Leptos Meta"
+    },
+    "Leptos CSS Link": {
+        "prefix": "lcss",
+        "body": [
+            "Link {",
+            "    rel=\"stylesheet\",",
+            "    href=\"/${1:styles.css}\"",
+            "}"
+        ],
+        "description": "Link CSS file with Leptos Meta"
+    },
+    "Leptos Script": {
+        "prefix": "lscript",
+        "body": [
+            "Script {",
+            "    src=\"/${1:script.js}\"",
+            "}"
+        ],
+        "description": "Include JavaScript file with Leptos Meta"
+    },
+    "Leptos Window Event": {
+        "prefix": "lwindow",
+        "body": [
+            "window_event_listener(ev::${1:resize}, move |${2:event}| {",
+            "    ${3:// Event handler}",
+            "});"
+        ],
+        "description": "Add window event listener"
+    },
+    "Leptos Document Event": {
+        "prefix": "ldoc",
+        "body": [
+            "document_event_listener(ev::${1:click}, move |${2:event}| {",
+            "    ${3:// Event handler}",
+            "});"
+        ],
+        "description": "Add document event listener"
+    },
+    "Leptos Interval": {
+        "prefix": "linterval",
+        "body": [
+            "set_interval_with_handle(",
+            "    move || {",
+            "        ${1:// Interval logic}",
+            "    },",
+            "    std::time::Duration::from_millis(${2:1000})",
+            ")"
+        ],
+        "description": "Create an interval timer"
+    },
+    "Leptos Timeout": {
+        "prefix": "ltimeout",
+        "body": [
+            "set_timeout_with_handle(",
+            "    move || {",
+            "        ${1:// Timeout logic}",
+            "    },",
+            "    std::time::Duration::from_millis(${2:1000})",
+            ")"
+        ],
+        "description": "Create a timeout"
+    },
+    "Leptos Local Storage": {
+        "prefix": "llocal",
+        "body": [
+            "let ${1:storage} = leptos::leptos_dom::helpers::local_storage();"
+        ],
+        "description": "Get local storage handle"
+    },
+    "Leptos Session Storage": {
+        "prefix": "lsession",
+        "body": [
+            "let ${1:storage} = leptos::leptos_dom::helpers::session_storage();"
+        ],
+        "description": "Get session storage handle"
+    },
+    "Leptos Fetch": {
+        "prefix": "lfetch",
+        "body": [
+            "let ${1:data} = create_resource(",
+            "    move || (),",
+            "    move |_| async move {",
+            "        let response = reqwest::get(\"${2:https://api.example.com/data}\").await?;",
+            "        let data: ${3:DataType} = response.json().await?;",
+            "        Ok::<_, reqwest::Error>(data)",
+            "    }",
+            ");"
+        ],
+        "description": "Create a resource with HTTP fetch"
+    },
+    "Leptos Error Handling": {
+        "prefix": "lerror_handle",
+        "body": [
+            "let ${1:error} = create_rw_signal::<Option<String>>(None);",
+            "",
+            "let handle_error = move |err: String| {",
+            "    ${1:error}.set(Some(err));",
+            "};"
+        ],
+        "description": "Create error handling pattern"
+    },
+    "Leptos Loading State": {
+        "prefix": "lloading",
+        "body": [
+            "let ${1:loading} = create_rw_signal(false);",
+            "",
+            "let set_loading = move |is_loading: bool| {",
+            "    ${1:loading}.set(is_loading);",
+            "};"
+        ],
+        "description": "Create loading state pattern"
+    },
+    "Leptos Form State": {
+        "prefix": "lform_state",
+        "body": [
+            "let ${1:form_data} = create_rw_signal(${2:FormData::default()});",
+            "let ${3:errors} = create_rw_signal::<Vec<String>>(vec![]);",
+            "",
+            "let handle_submit = move |ev: leptos::html::SubmitEvent| {",
+            "    ev.prevent_default();",
+            "    ${4:// Form submission logic}",
+            "};"
+        ],
+        "description": "Create form state management"
+    },
+    "Leptos Context Provider": {
+        "prefix": "lcontext",
+        "body": [
+            "#[derive(Clone)]",
+            "pub struct ${1:ContextData} {",
+            "    pub ${2:value}: ReadSignal<${3:String}>,",
+            "    pub ${4:set_value}: WriteSignal<${3:String}>,",
+            "}",
+            "",
+            "pub fn provide_${1:ContextData}() {",
+            "    let (${2:value}, ${4:set_value}) = create_signal(\"${5:default}\".to_string());",
+            "    provide_context(ContextData { ${2:value}, ${4:set_value} });",
+            "}"
+        ],
+        "description": "Create a context provider"
+    },
+    "Leptos Context Consumer": {
+        "prefix": "luse_context",
+        "body": [
+            "let ${1:context} = use_context::<${2:ContextData>>().expect(\"Context not found\");"
+        ],
+        "description": "Use context in component"
+    },
+    "Leptos Debug": {
+        "prefix": "ldebug",
+        "body": [
+            "leptos::logging::log!(\"${1:Debug message}: {:?}\", ${2:value});"
+        ],
+        "description": "Add debug logging"
+    },
+    "Leptos Console Log": {
+        "prefix": "lconsole",
+        "body": [
+            "web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(\"${1:Message}\"));"
+        ],
+        "description": "Console log in browser"
+    },
+    "Leptos Window Size": {
+        "prefix": "lwindow_size",
+        "body": [
+            "let ${1:window_size} = create_rw_signal((800, 600));",
+            "",
+            "window_event_listener(ev::resize, move |_| {",
+            "    let window = web_sys::window().unwrap();",
+            "    let width = window.inner_width().unwrap().as_f64().unwrap() as u32;",
+            "    let height = window.inner_height().unwrap().as_f64().unwrap() as u32;",
+            "    ${1:window_size}.set((width, height));",
+            "});"
+        ],
+        "description": "Track window size"
+    },
+    "Leptos URL Hash": {
+        "prefix": "lhash",
+        "body": [
+            "let ${1:hash} = create_rw_signal(web_sys::window()",
+            "    .unwrap()",
+            "    .location()",
+            "    .hash()",
+            "    .unwrap_or_default());",
+            "",
+            "window_event_listener(ev::hashchange, move |_| {",
+            "    let new_hash = web_sys::window()",
+            "        .unwrap()",
+            "        .location()",
+            "        .hash()",
+            "        .unwrap_or_default();",
+            "    ${1:hash}.set(new_hash);",
+            "});"
+        ],
+        "description": "Track URL hash changes"
+    },
+    "Leptos Local Storage Signal": {
+        "prefix": "llocal_signal",
+        "body": [
+            "let ${1:storage_key} = \"${2:my_key}\";",
+            "let ${3:value} = create_rw_signal(",
+            "    leptos::leptos_dom::helpers::local_storage()",
+            "        .get_item(${1:storage_key})",
+            "        .unwrap_or_default()",
+            ");",
+            "",
+            "create_effect(move |_| {",
+            "    if let Some(storage) = leptos::leptos_dom::helpers::local_storage() {",
+            "        let _ = storage.set_item(${1:storage_key}, &${3:value}.get());",
+            "    }",
+            "});"
+        ],
+        "description": "Create signal synced with local storage"
+    },
+    "Leptos Toggle": {
+        "prefix": "ltoggle",
+        "body": [
+            "let (${1:is_open}, set_${1:is_open}) = create_signal(false);",
+            "",
+            "let toggle = move |_| {",
+            "    set_${1:is_open}.update(|x| *x = !*x);",
+            "};"
+        ],
+        "description": "Create a toggle state"
+    },
+    "Leptos Counter": {
+        "prefix": "lcounter",
+        "body": [
+            "let (${1:count}, set_${1:count}) = create_signal(0);",
+            "",
+            "let increment = move |_| {",
+            "    set_${1:count}.update(|x| *x += 1);",
+            "};",
+            "",
+            "let decrement = move |_| {",
+            "    set_${1:count}.update(|x| *x -= 1);",
+            "};"
+        ],
+        "description": "Create a counter with increment/decrement"
     }
 }
