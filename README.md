@@ -177,6 +177,9 @@ If you see an error that `leptosfmt` is not installed:
 If you encounter any issues or have questions, please open an issue on the GitHub repository.
 Git: https://github.com/morshedulmunna/leptos-auto-formatter
 
+Support: https://buymeacoffee.com/moshedulmunna
+
+
 #### Contact
 Morshedul Islam Munna
 Software Engineer
