@@ -16,6 +16,27 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(disposable);
 
+    // Register commands
+    const formatCommand = vscode.commands.registerCommand('leptosFormatter.formatDocument', async () => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor && editor.document.languageId === 'rust') {
+            await formatter.formatDocument(editor.document);
+        } else {
+            vscode.window.showWarningMessage('Please open a Rust file to format.');
+        }
+    });
+
+    const toggleFormatOnSaveCommand = vscode.commands.registerCommand('leptosFormatter.toggleFormatOnSave', async () => {
+        const config = vscode.workspace.getConfiguration('leptosFormatter');
+        const currentValue = config.get<boolean>('enableOnSave', true);
+        await config.update('enableOnSave', !currentValue, vscode.ConfigurationTarget.Global);
+        
+        const message = !currentValue ? 'Leptos format on save enabled' : 'Leptos format on save disabled';
+        vscode.window.showInformationMessage(message);
+    });
+
+    context.subscriptions.push(formatCommand, toggleFormatOnSaveCommand);
+
     // Register on save handler
     const onSaveHandler = vscode.workspace.onDidSaveTextDocument(async (document) => {
         if (document.languageId === 'rust') {

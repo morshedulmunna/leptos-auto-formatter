@@ -2,13 +2,14 @@
   "name": "leptos-auto-formatter",
   "displayName": "Leptos Auto Formatter",
   "description": "Format Leptos components using leptosfmt on save",
-  "version": "1.0.0",
-  "publisher": "MorshedulMunna",
+  "version": "1.0.3",
+  "publisher": "morshedulmunna",
   "engines": {
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Formatters"
+    "Formatters",
+    "Snippets"
   ],
   "keywords": [
     "leptos",
@@ -27,6 +28,7 @@
     "url": "https://github.com/morshedulmunna/leptos-auto-formatter/issues"
   },
   "license": "MIT",
+  "icon": "images/icon.png",
   "activationEvents": [
     "onLanguage:rust"
   ],
@@ -54,6 +56,51 @@
           ".rs"
         ]
       }
+    ],
+    "snippets": [
+      {
+        "language": "rust",
+        "path": "./snippets/rust.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "leptosFormatter.formatDocument",
+        "title": "Format with Leptos",
+        "category": "Leptos",
+        "icon": "$(format)"
+      },
+      {
+        "command": "leptosFormatter.toggleFormatOnSave",
+        "title": "Toggle Format on Save",
+        "category": "Leptos",
+        "icon": "$(save)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "leptosFormatter.formatDocument",
+          "when": "resourceExtname == .rs",
+          "group": "1_modification"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "leptosFormatter.formatDocument",
+          "when": "resourceExtname == .rs"
+        },
+        {
+          "command": "leptosFormatter.toggleFormatOnSave"
+        }
+      ]
+    },
+    "iconThemes": [
+      {
+        "id": "leptos-icons",
+        "label": "Leptos Icons",
+        "path": "./icons/leptos-icon-theme.json"
+      }
     ]
   },
   "scripts": {
@@ -64,6 +111,7 @@
   "devDependencies": {
     "@types/node": "16.x",
     "@types/vscode": "^1.74.0",
+    "sharp": "^0.34.4",
     "typescript": "^4.9.4"
   }
 }

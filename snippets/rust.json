@@ -1,0 +1,305 @@
+{
+    "Leptos Component": {
+        "prefix": "lc",
+        "body": [
+            "#[component]",
+            "pub fn ${1:ComponentName}() -> impl IntoView {",
+            "    view! {",
+            "        ${2:// Component content}",
+            "    }",
+            "}"
+        ],
+        "description": "Create a basic Leptos component"
+    },
+    "Leptos Component with Props": {
+        "prefix": "lcp",
+        "body": [
+            "#[component]",
+            "pub fn ${1:ComponentName}(props: ${2:Props}) -> impl IntoView {",
+            "    view! {",
+            "        ${3:// Component content}",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos component with props"
+    },
+    "Leptos View": {
+        "prefix": "lv",
+        "body": [
+            "view! {",
+            "    ${1:// View content}",
+            "}"
+        ],
+        "description": "Create a Leptos view block"
+    },
+    "Leptos Signal": {
+        "prefix": "ls",
+        "body": [
+            "let (${1:value}, set_${1:value}) = create_signal(${2:initial_value});"
+        ],
+        "description": "Create a Leptos signal"
+    },
+    "Leptos Effect": {
+        "prefix": "le",
+        "body": [
+            "create_effect(move |_| {",
+            "    ${1:// Effect logic}",
+            "});"
+        ],
+        "description": "Create a Leptos effect"
+    },
+    "Leptos Resource": {
+        "prefix": "lr",
+        "body": [
+            "let ${1:resource} = create_resource(",
+            "    move || ${2:dependencies},",
+            "    move |${3:dep}| async move {",
+            "        ${4:// Resource logic}",
+            "    }",
+            ");"
+        ],
+        "description": "Create a Leptos resource"
+    },
+    "Leptos For Loop": {
+        "prefix": "lf",
+        "body": [
+            "For {",
+            "    each=${1:items},",
+            "    key=${2:key_fn},",
+            "    children=|${3:item}| view! {",
+            "        ${4:// Item content}",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos For loop"
+    },
+    "Leptos Show": {
+        "prefix": "lshow",
+        "body": [
+            "Show {",
+            "    when=${1:condition},",
+            "    children=|| view! {",
+            "        ${2:// Content to show}",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos Show conditional"
+    },
+    "Leptos Show with Fallback": {
+        "prefix": "lshowf",
+        "body": [
+            "Show {",
+            "    when=${1:condition},",
+            "    fallback=|| view! { ${3:// Fallback content} },",
+            "    children=|| view! {",
+            "        ${2:// Content to show}",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos Show with fallback"
+    },
+    "Leptos Suspense": {
+        "prefix": "lsuspense",
+        "body": [
+            "Suspense {",
+            "    fallback=|| view! { ${1:// Loading content} },",
+            "    children=|| view! {",
+            "        ${2:// Suspense content}",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos Suspense boundary"
+    },
+    "Leptos Error Boundary": {
+        "prefix": "lerror",
+        "body": [
+            "ErrorBoundary {",
+            "    fallback=|${1:errors}| view! {",
+            "        ${2:// Error content}",
+            "    },",
+            "    children=|| view! {",
+            "        ${3:// Content that might error}",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Leptos ErrorBoundary"
+    },
+    "Leptos Router Route": {
+        "prefix": "lroute",
+        "body": [
+            "Route {",
+            "    path=\"${1:/path}\",",
+            "    view=${2:ComponentName},",
+            "}"
+        ],
+        "description": "Create a Leptos Router route"
+    },
+    "Leptos Router Routes": {
+        "prefix": "lroutes",
+        "body": [
+            "Routes {",
+            "    ${1:// Route definitions}",
+            "}"
+        ],
+        "description": "Create a Leptos Router Routes container"
+    },
+    "Leptos Link": {
+        "prefix": "llink",
+        "body": [
+            "Link {",
+            "    to=\"${1:/path}\",",
+            "    \"${2:Link text}\"",
+            "}"
+        ],
+        "description": "Create a Leptos Router Link"
+    },
+    "Leptos Button": {
+        "prefix": "lbtn",
+        "body": [
+            "button {",
+            "    on:click=${1:click_handler},",
+            "    \"${2:Button text}\"",
+            "}"
+        ],
+        "description": "Create a Leptos button element"
+    },
+    "Leptos Input": {
+        "prefix": "linput",
+        "body": [
+            "input {",
+            "    type=\"${1:text}\",",
+            "    prop:value=${2:value},",
+            "    on:input=${3:input_handler},",
+            "}"
+        ],
+        "description": "Create a Leptos input element"
+    },
+    "Leptos Form": {
+        "prefix": "lform",
+        "body": [
+            "form {",
+            "    on:submit=${1:submit_handler},",
+            "    ${2:// Form content}",
+            "}"
+        ],
+        "description": "Create a Leptos form element"
+    },
+    "Leptos Div with Class": {
+        "prefix": "ldiv",
+        "body": [
+            "div {",
+            "    class=\"${1:css-class}\",",
+            "    ${2:// Div content}",
+            "}"
+        ],
+        "description": "Create a Leptos div with CSS class"
+    },
+    "Leptos Span": {
+        "prefix": "lspan",
+        "body": [
+            "span {",
+            "    \"${1:Text content}\"",
+            "}"
+        ],
+        "description": "Create a Leptos span element"
+    },
+    "Leptos Paragraph": {
+        "prefix": "lp",
+        "body": [
+            "p {",
+            "    \"${1:Paragraph content}\"",
+            "}"
+        ],
+        "description": "Create a Leptos paragraph element"
+    },
+    "Leptos Heading": {
+        "prefix": "lh",
+        "body": [
+            "h${1:1} {",
+            "    \"${2:Heading content}\"",
+            "}"
+        ],
+        "description": "Create a Leptos heading element"
+    },
+    "Leptos List Item": {
+        "prefix": "lli",
+        "body": [
+            "li {",
+            "    \"${1:List item content}\"",
+            "}"
+        ],
+        "description": "Create a Leptos list item element"
+    },
+    "Leptos Unordered List": {
+        "prefix": "lul",
+        "body": [
+            "ul {",
+            "    ${1:// List items}",
+            "}"
+        ],
+        "description": "Create a Leptos unordered list"
+    },
+    "Leptos Ordered List": {
+        "prefix": "lol",
+        "body": [
+            "ol {",
+            "    ${1:// List items}",
+            "}"
+        ],
+        "description": "Create a Leptos ordered list"
+    },
+    "Leptos Main Function": {
+        "prefix": "lmain",
+        "body": [
+            "#[tokio::main]",
+            "async fn main() {",
+            "    _ = console_log::init_with_level(log::Level::Debug);",
+            "    console_error_panic_hook::set_once();",
+            "",
+            "    leptos::mount_to_body(|| view! { <${1:App/> });",
+            "}"
+        ],
+        "description": "Create a Leptos main function with basic setup"
+    },
+    "Leptos App Component": {
+        "prefix": "lapp",
+        "body": [
+            "#[component]",
+            "fn App() -> impl IntoView {",
+            "    view! {",
+            "        <main>",
+            "            <h1>\"Welcome to Leptos!\"</h1>",
+            "            <p>\"This is a Leptos application.\"</p>",
+            "        </main>",
+            "    }",
+            "}"
+        ],
+        "description": "Create a basic Leptos App component"
+    },
+    "Leptos Server Function": {
+        "prefix": "lserver",
+        "body": [
+            "#[server]",
+            "pub async fn ${1:function_name}(${2:params}) -> Result<${3:ReturnType}, ServerFnError> {",
+            "    ${4:// Server function logic}",
+            "    Ok(${5:result})",
+            "}"
+        ],
+        "description": "Create a Leptos server function"
+    },
+    "Leptos Action": {
+        "prefix": "laction",
+        "body": [
+            "let ${1:action} = create_server_action::<${2:ActionType>>();"
+        ],
+        "description": "Create a Leptos action"
+    },
+    "Leptos Multi Action": {
+        "prefix": "lmulti",
+        "body": [
+            "let ${1:action} = create_server_action::<${2:ActionType>>();",
+            "let ${3:pending} = ${1:action}.pending();"
+        ],
+        "description": "Create a Leptos action with pending state"
+    }
+}

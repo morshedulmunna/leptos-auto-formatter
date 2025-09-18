@@ -6,6 +6,7 @@ A VS Code extension that automatically formats Leptos components using `leptosfm
 
 - ✅ Automatic formatting of Rust files (`.rs`) on save
 - ✅ Uses `leptosfmt` as the underlying formatter
+- ✅ **25+ Leptos code snippets** for rapid development
 - ✅ Configurable enable/disable formatting on save
 - ✅ Customizable `leptosfmt` executable path
 - ✅ Error handling with helpful installation instructions
@@ -75,6 +76,8 @@ Add to your VS Code `settings.json`:
 
 ## Usage
 
+### Automatic Formatting
+
 1. Open any Rust file (`.rs`)
 2. Make changes to your Leptos components
 3. Save the file (`Ctrl+S` / `Cmd+S`)
@@ -83,6 +86,73 @@ Add to your VS Code `settings.json`:
 You can also manually format by:
 - Using the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and searching for "Format Document"
 - Right-clicking in the editor and selecting "Format Document"
+
+### Code Snippets
+
+The extension includes 25+ Leptos-specific code snippets to speed up development. Simply type the snippet prefix and press `Tab` to expand:
+
+#### **Core Components**
+- `lc` - Basic Leptos component
+- `lcp` - Component with props
+- `lv` - View block
+- `lapp` - App component
+
+#### **Reactivity**
+- `ls` - Create signal
+- `le` - Create effect
+- `lr` - Create resource
+- `laction` - Create action
+- `lmulti` - Create action with pending state
+
+#### **Conditional Rendering**
+- `lshow` - Show component
+- `lshowf` - Show with fallback
+- `lsuspense` - Suspense boundary
+- `lerror` - Error boundary
+
+#### **Lists & Loops**
+- `lf` - For loop
+- `lul` - Unordered list
+- `lol` - Ordered list
+- `lli` - List item
+
+#### **HTML Elements**
+- `lbtn` - Button
+- `linput` - Input field
+- `lform` - Form
+- `ldiv` - Div with class
+- `lspan` - Span
+- `lp` - Paragraph
+- `lh` - Heading
+
+#### **Routing**
+- `lroute` - Router route
+- `lroutes` - Router routes container
+- `llink` - Router link
+
+#### **Server Functions**
+- `lserver` - Server function
+- `lmain` - Main function with setup
+
+#### **Example Usage**
+```rust
+// Type 'lc' + Tab to get:
+#[component]
+pub fn ComponentName() -> impl IntoView {
+    view! {
+        // Component content
+    }
+}
+
+// Type 'ls' + Tab to get:
+let (value, set_value) = create_signal(initial_value);
+
+// Type 'lbtn' + Tab to get:
+button {
+    on:click=click_handler,
+    "Button text"
+}
+```
 
 ## Troubleshooting
 

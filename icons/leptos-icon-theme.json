@@ -1,0 +1,17 @@
+{
+    "iconDefinitions": {
+        "leptos-file": {
+            "iconPath": "./images/icon-16x16.png"
+        },
+        "leptos-component": {
+            "iconPath": "./images/icon-16x16.png"
+        }
+    },
+    "file": "leptos-file",
+    "fileExtensions": {
+        "rs": "leptos-file"
+    },
+    "languageIds": {
+        "rust": "leptos-component"
+    }
+}
