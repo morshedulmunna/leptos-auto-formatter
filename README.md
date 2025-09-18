@@ -6,7 +6,7 @@ A VS Code extension that automatically formats Leptos components using `leptosfm
 
 - ✅ Automatic formatting of Rust files (`.rs`) on save
 - ✅ Uses `leptosfmt` as the underlying formatter
-- ✅ **25+ Leptos code snippets** for rapid development
+- ✅ **65+ Leptos code snippets** for rapid development
 - ✅ Configurable enable/disable formatting on save
 - ✅ Customizable `leptosfmt` executable path
 - ✅ Error handling with helpful installation instructions
@@ -89,20 +89,34 @@ You can also manually format by:
 
 ### Code Snippets
 
-The extension includes 25+ Leptos-specific code snippets to speed up development. Simply type the snippet prefix and press `Tab` to expand:
+The extension includes 65+ Leptos-specific code snippets to speed up development. Simply type the snippet prefix and press `Tab` to expand:
+
+#### **Imports & Setup**
+- `limports` - Common Leptos imports
+- `lrouter` - Leptos with router imports
+- `lserver_imports` - Leptos with server function imports
+- `lfull` - Complete Leptos imports with router and server
+- `ldeps` - Common Leptos Cargo dependencies
+- `ldeps_ssr` - Leptos Cargo dependencies for SSR
 
 #### **Core Components**
 - `lc` - Basic Leptos component
 - `lcp` - Component with props
+- `lcc` - Component with children and optional class
+- `lcpc` - Component with props and children
 - `lv` - View block
 - `lapp` - App component
 
-#### **Reactivity**
+#### **Reactivity & State**
 - `ls` - Create signal
 - `le` - Create effect
 - `lr` - Create resource
+- `lmemo` - Create memo
+- `lderived` - Create derived signal
 - `laction` - Create action
 - `lmulti` - Create action with pending state
+- `ltoggle` - Create toggle state
+- `lcounter` - Create counter with increment/decrement
 
 #### **Conditional Rendering**
 - `lshow` - Show component
@@ -130,15 +144,66 @@ The extension includes 25+ Leptos-specific code snippets to speed up development
 - `lroutes` - Router routes container
 - `llink` - Router link
 
-#### **Server Functions**
+#### **Server Functions & Actions**
 - `lserver` - Server function
 - `lmain` - Main function with setup
 
+#### **App Lifecycle**
+- `lmount` - Mount app to body
+- `lhydrate` - Hydrate app to body
+- `lssr` - Server-side render app
+
+#### **Meta Tags & Head**
+- `ltitle` - Set page title
+- `ldesc` - Set meta description
+- `lcss` - Link CSS file
+- `lscript` - Include JavaScript file
+
+#### **Event Handling**
+- `lwindow` - Window event listener
+- `ldoc` - Document event listener
+
+#### **Timers & Async**
+- `linterval` - Create interval timer
+- `ltimeout` - Create timeout
+- `lfetch` - Create resource with HTTP fetch
+
+#### **Storage**
+- `llocal` - Get local storage handle
+- `lsession` - Get session storage handle
+- `llocal_signal` - Signal synced with local storage
+
+#### **State Management**
+- `lerror_handle` - Error handling pattern
+- `lloading` - Loading state pattern
+- `lform_state` - Form state management
+- `lcontext` - Context provider
+- `luse_context` - Use context in component
+
+#### **Debugging & Logging**
+- `ldebug` - Debug logging
+- `lconsole` - Console log in browser
+
+#### **Browser APIs**
+- `lwindow_size` - Track window size
+- `lhash` - Track URL hash changes
+
 #### **Example Usage**
 ```rust
+// Type 'limports' + Tab to get:
+use leptos::prelude::*;
+
 // Type 'lc' + Tab to get:
 #[component]
 pub fn ComponentName() -> impl IntoView {
+    view! {
+        // Component content
+    }
+}
+
+// Type 'lcp' + Tab to get:
+#[component]
+pub fn ComponentName(props: Props) -> impl IntoView {
     view! {
         // Component content
     }
@@ -151,6 +216,36 @@ let (value, set_value) = create_signal(initial_value);
 button {
     on:click=click_handler,
     "Button text"
+}
+
+// Type 'lshow' + Tab to get:
+Show {
+    when=condition,
+    children=|| view! {
+        // Content to show
+    }
+}
+
+// Type 'lfetch' + Tab to get:
+let data = create_resource(
+    move || (),
+    move |_| async move {
+        let response = reqwest::get("https://api.example.com/data").await?;
+        let data: DataType = response.json().await?;
+        Ok::<_, reqwest::Error>(data)
+    }
+);
+
+// Type 'lcontext' + Tab to get:
+#[derive(Clone)]
+pub struct ContextData {
+    pub value: ReadSignal<String>,
+    pub set_value: WriteSignal<String>,
+}
+
+pub fn provide_ContextData() {
+    let (value, set_value) = create_signal("default".to_string());
+    provide_context(ContextData { value, set_value });
 }
 ```
 
